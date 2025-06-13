@@ -12,11 +12,104 @@
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      :root {
+        --primary-color: #e04a28;
+        --primary-hover: #c4371a;
+        --primary-light: #fbf9f8;
+        --primary-border: #e6d5d1;
+        --text-primary: #1b110e;
+        --text-secondary: #955d50;
+      }
+      
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .scrollbar-hide {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+      
+      /* Full-width styles */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+      }
+      
+      /* Force full width containers */
+      .w-full {
+        width: 100% !important;
+      }
+      
+      /* Smooth animations for sections */
+      @keyframes fadeIn {
+        from { opacity: 0.5; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      /* Hero section styling for full width */
+      .hero-section {
+        width: 100% !important;
+        max-width: none !important; 
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* Section padding standardization */
+      .flex.flex-col.gap-10.py-10.w-full {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+      
+      /* Consistent card styling */
+      .rounded-lg {
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+      
+      /* Consistent grid gaps */
+      .grid {
+        gap: 1.5rem;
+      }
+      
+      /* Standardized section headings */
+      .text-[32px].font-bold {
+        margin-bottom: 0.5rem;
+      }
+      
+      /* Add subtle horizontal padding on smaller screens */
+      @media (max-width: 768px) {
+        .md\\:px-10 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        .flex.flex-col.gap-10.py-10.w-full {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+      }
+      
+      /* Consistent container widths */
+      .max-w-7xl {
+        max-width: 80rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
   </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-[#fbf9f8] group/design-root overflow-x-hidden" style='font-family: "Raleway", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f3eae8] px-10 py-3">
+  <body class="overflow-x-hidden w-full m-0 p-0">
+    <div class="relative flex flex-col bg-[#fbf9f8] min-h-screen w-full group/design-root" style='font-family: "Raleway", sans-serif;'>
+      <div class="flex h-full grow flex-col w-full overflow-hidden">
+        <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f3eae8] px-6 md:px-10 py-3 bg-[#fbf9f8] transition-all duration-300 backdrop-blur-sm bg-opacity-90 w-full">
           <div class="flex items-center gap-4 text-[#1b110e]">
             <div class="size-4">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,8 +129,8 @@
             </div>
             <h2 class="text-[#1b110e] text-lg font-bold leading-tight tracking-[-0.015em]">Chris Austin PR</h2>
           </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
+          <div class="flex flex-1 justify-end gap-4 md:gap-8">
+            <div class="hidden md:flex items-center gap-4 lg:gap-9">
               <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">Services</a>
               <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">Case Studies</a>
               <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">About</a>
@@ -48,18 +141,21 @@
             >
               <span class="truncate">Get Started</span>
             </button>
+            <button class="md:hidden flex items-center justify-center w-10 h-10 text-[#1b110e]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+              </svg>
+            </button>
           </div>
         </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:p-4">
+        <div class="w-full flex-1 py-5">
+          <div class="w-full flex flex-col">
                 <div
-                  class="flex min-h-[600px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center px-4 pb-10 @[480px]:px-10"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCoSpNUmmMfL19pU9IKO83YC1lV7gnntNwqTWtdiML5Szf9LZjTFkigBft0gdE9kMvAxXrfZKCaZ91gcIZKR-gsxB4TLef5uuxRhAJ7ve6FewuGUXRaucG4i8tJg4RZL_Kva2xpjbAhh10cO0eacQLdkJ2boeM81LKkOa1xQUjfsatsMuU13jv6kZ_BEvHpckycezbRkrtTKQr5l4Upq4gfadvhxpoYw5Zatubd5h6rNXX9jPQGgatELzGrklZojgkovqf9291I1zs");'
+                  class="flex h-screen w-full flex-col gap-6 bg-fixed bg-cover bg-center bg-no-repeat @[480px]:gap-8 items-center justify-center pb-10 -mt-[72px] pt-[72px] overflow-hidden hero-section"
+                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%), url("https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");'
                 >
                   <div class="uppercase text-white text-sm font-bold tracking-widest mb-2">Well hey there, Superstar</div>
-                  <div class="flex flex-col gap-4 text-center max-w-3xl">
+                  <div class="flex flex-col gap-4 text-center w-full px-4 md:px-20 max-w-5xl mx-auto">
                     <h1
                       class="text-white text-5xl font-black leading-tight tracking-[-0.033em] @[480px]:text-6xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                     >
@@ -83,182 +179,286 @@
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="flex flex-col gap-10 px-4 py-10 @container">
-              <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-10 py-10 w-full @container items-center">
+              <div class="flex flex-col gap-4 px-4 md:px-10 max-w-7xl w-full">
                 <h1
-                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                 >
                   Our Services
                 </h1>
-                <p class="text-[#1b110e] text-base font-normal leading-normal max-w-[720px]">
+                <p class="text-[#1b110e] text-base font-normal leading-normal">
                   We offer a comprehensive suite of PR marketing services tailored to meet your unique needs and objectives.
                 </p>
               </div>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 flex-col">
-                  <div class="text-[#1b110e]" data-icon="Megaphone" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M240,120a48.05,48.05,0,0,0-48-48H152.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,24,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,151.12,214l11,7.33A16,16,0,0,0,186.5,212l11.77-44.36A48.07,48.07,0,0,0,240,120ZM40,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C126.65,155,82.84,164.07,40,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM192,152H160V88h32a32,32,0,1,1,0,64Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#1b110e] text-base font-bold leading-tight">Strategic PR Planning</h2>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">
-                      Develop a robust PR strategy aligned with your business goals, ensuring maximum impact and brand visibility.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 flex-col">
-                  <div class="text-[#1b110e]" data-icon="PresentationChart" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#1b110e] text-base font-bold leading-tight">Data-Driven Marketing Campaigns</h2>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">
-                      Leverage data analytics to optimize marketing campaigns, ensuring efficient resource allocation and measurable results.
-                    </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
+                <!-- Strategic PR Planning -->
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M240,120a48.05,48.05,0,0,0-48-48H152.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,24,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,151.12,214l11,7.33A16,16,0,0,0,186.5,212l11.77-44.36A48.07,48.07,0,0,0,240,120ZM40,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C126.65,155,82.84,164.07,40,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM192,152H160V88h32a32,32,0,1,1,0,64Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Strategic PR Planning</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        Develop a robust PR strategy aligned with your business goals, ensuring maximum impact and brand visibility.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 flex-col">
-                  <div class="text-[#1b110e]" data-icon="UsersThree" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"
-                      ></path>
-                    </svg>
+                
+                <!-- Data-Driven Campaigns -->
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Data-Driven Campaigns</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        Leverage data analytics to optimize marketing campaigns, ensuring efficient resource allocation and measurable results.
+                      </p>
+                    </div>
                   </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#1b110e] text-base font-bold leading-tight">Community Engagement</h2>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">
-                      Build and nurture strong relationships with your target audience through effective community engagement strategies.
-                    </p>
+                </div>
+                
+                <!-- Community Engagement -->
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Community Engagement</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        Build and nurture strong relationships with your target audience through effective community engagement strategies.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Crisis Management -->
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h40A8,8,0,0,1,176,128Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Crisis Management</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        Navigate challenging situations with expert crisis management strategies that protect and enhance your reputation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Brand Visibility -->
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Brand Visibility</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        Increase your brand's reach and recognition through strategic PR initiatives that get you noticed by the right audience.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col gap-10 px-4 py-10 @container">
-              <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-10 py-10 w-full @container items-center">
+              <div class="flex flex-col gap-4 px-4 md:px-10 max-w-7xl w-full">
                 <h1
-                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                 >
                   Case Studies
                 </h1>
-                <p class="text-[#1b110e] text-base font-normal leading-normal max-w-[720px]">
+                <p class="text-[#1b110e] text-base font-normal leading-normal">
                   Explore our success stories and see how we've helped businesses like yours achieve remarkable growth.
                 </p>
               </div>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3">
-                <div class="flex flex-col gap-3 pb-3">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2wTZUnDdFOACjZt-047wo1_380FIKHyDxqam1Mv4fw9_D7bP78wBJjPEHiOZE3z3fGlVbPX_Hn3az4ptJQ94dmHt887lEwH2XZJO5oRef6vB2N1Yk_gBmfyHd6BE4JYXtJwNXfdOz5wgJYtUOATEsC4RBhS863mawi-mFY9-NlE_Ml74hIfccnJeMKmEGoV13Jfpy34dQMGMODaRg6TJ7yss7N8R1P3Si5jSZILkjJadM1JwrO6RRp8R3PLZgL_asVKXQKQBR-dU");'
-                  ></div>
-                  <div>
-                    <p class="text-[#1b110e] text-base font-medium leading-normal">Tech Startup Success</p>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">Increased brand awareness by 200% and secured media coverage in top industry publications.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
+                <!-- Tech Startup Success -->
+                <div class="group relative">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="relative overflow-hidden rounded-xl">
+                      <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2wTZUnDdFOACjZt-047wo1_380FIKHyDxqam1Mv4fw9_D7bP78wBJjPEHiOZE3z3fGlVbPX_Hn3az4ptJQ94dmHt887lEwH2XZJO5oRef6vB2N1Yk_gBmfyHd6BE4JYXtJwNXfdOz5wgJYtUOATEsC4RBhS863mawi-mFY9-NlE_Ml74hIfccnJeMKmEGoV13Jfpy34dQMGMODaRg6TJ7yss7N8R1P3Si5jSZILkjJadM1JwrO6RRp8R3PLZgL_asVKXQKQBR-dU");'
+                      ></div>
+                    </div>
+                    <div class="mt-2">
+                      <p class="text-[#1b110e] text-base font-bold leading-normal">Tech Startup Success</p>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">Increased brand awareness by 200% and secured media coverage in top industry publications.</p>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-col gap-3 pb-3">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2uyKhWhdxrJ9sQncCN2EQsLroTGtUPHzXsxuWgYrTOfRS7Mat6eVIAj7QB4S7bhXLSZ1i9Vx8l7PRJcNGm4zyZEvULdEUVxut1o7ePu2ue6ws7RouzWvQx5Zo_nlzVCjlVr7R2qM4jPhx9aw7ZvLEmmWQR9whANIMq40Ik631ZLC7pjNIMppXFmqcCk5dA3CLdb9uF646OiXMkReUXX3PeaQbRURExcPMAJONaoyb0dTVK_wIdG4l4-Ia2_4AGBp0Hsq0p2dWXFA");'
-                  ></div>
-                  <div>
-                    <p class="text-[#1b110e] text-base font-medium leading-normal">Retail Brand Transformation</p>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">Revitalized brand image, resulting in a 50% increase in sales and customer engagement.</p>
+
+                <!-- Retail Brand Transformation -->
+                <div class="group relative">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="relative overflow-hidden rounded-xl">
+                      <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2uyKhWhdxrJ9sQncCN2EQsLroTGtUPHzXsxuWgYrTOfRS7Mat6eVIAj7QB4S7bhXLSZ1i9Vx8l7PRJcNGm4zyZEvULdEUVxut1o7ePu2ue6ws7RouzWvQx5Zo_nlzVCjlVr7R2qM4jPhx9aw7ZvLEmmWQR9whANIMq40Ik631ZLC7pjNIMppXFmqcCk5dA3CLdb9uF646OiXMkReUXX3PeaQbRURExcPMAJONaoyb0dTVK_wIdG4l4-Ia2_4AGBp0Hsq0p2dWXFA");'
+                      ></div>
+                    </div>
+                    <div class="mt-2">
+                      <p class="text-[#1b110e] text-base font-bold leading-normal">Retail Brand Transformation</p>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">Revitalized brand image, resulting in a 50% increase in sales and customer engagement.</p>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-col gap-3 pb-3">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2RAgDAzYHB8_JUVlcB-90tiHJPQAXBz3gLaQAIuAzbt2u1xdB-gI08RHxzDYVvEFExFp5am-k9U8aPjMeso0BB3BswsXw6WT6jxILqMo0eguDgad2IoRP-WI9eT9VqSUQnjON6eNn5iEAAHeSviKRu3KNdQH2qhiszhOCYmvOgHVu83SeNvNV7rNtg2zdMn2dtrkG8-XIiNOVmIazYCARKJxlhtH8YMxixNKdLYRlYiBbb_WU59AKKK8FIZ8wew5b9gWiecVtl1c");'
-                  ></div>
-                  <div>
-                    <p class="text-[#1b110e] text-base font-medium leading-normal">Nonprofit Awareness Campaign</p>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">
-                      Successfully raised awareness and support for a critical cause, exceeding fundraising goals by 30%.
-                    </p>
+
+                <!-- Nonprofit Awareness Campaign -->
+                <div class="group relative">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="relative overflow-hidden rounded-xl">
+                      <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2RAgDAzYHB8_JUVlcB-90tiHJPQAXBz3gLaQAIuAzbt2u1xdB-gI08RHxzDYVvEFExFp5am-k9U8aPjMeso0BB3BswsXw6WT6jxILqMo0eguDgad2IoRP-WI9eT9VqSUQnjON6eNn5iEAAHeSviKRu3KNdQH2qhiszhOCYmvOgHVu83SeNvNV7rNtg2zdMn2dtrkG8-XIiNOVmIazYCARKJxlhtH8YMxixNKdLYRlYiBbb_WU59AKKK8FIZ8wew5b9gWiecVtl1c");'
+                      ></div>
+                    </div>
+                    <div class="mt-2">
+                      <p class="text-[#1b110e] text-base font-bold leading-normal">Nonprofit Awareness Campaign</p>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">
+                        Successfully raised awareness and support for a critical cause, exceeding fundraising goals by 30%.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Global Brand Expansion -->
+                <div class="group relative">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="relative overflow-hidden rounded-xl">
+                      <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA32f3JrcvLpJS9hje1rU00gZl8gcvRggrFsO-_AgB3oIEJMJZjajuilFIxroZ-2nAZ8p73HdlwC2QeFbOd0DGU7WrSAq86FCGTQp5Uft5gYZ1Ccv2E2isEx6UVKtQ3bJdGL5V9ClTnzpWjpUZhY1nPiIfN3kIm2cHf5htPi7eMku0aKgQw5Qs4WyvcRs3VxHwhHbUe9q-TXXOY4dpPgqQjomVKjtnPuC0UIYBrUOeiRCDgxSW6CZB5j_mSP_mS1ExAOHih3KLLQjA");'
+                      ></div>
+                    </div>
+                    <div class="mt-2">
+                      <p class="text-[#1b110e] text-base font-bold leading-normal">Global Brand Expansion</p>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">
+                        Helped a national brand successfully expand into international markets with tailored PR strategies.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col gap-10 px-4 py-10 @container">
-              <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-10 py-10 w-full @container items-center">
+              <div class="flex flex-col gap-4 px-4 md:px-10 max-w-7xl w-full">
                 <h1
-                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                 >
                   About Us
                 </h1>
-                <p class="text-[#1b110e] text-base font-normal leading-normal max-w-[720px]">
+                <p class="text-[#1b110e] text-base font-normal leading-normal">
                   Meet the team behind Chris Austin PR and discover our passion for driving impactful results.
                 </p>
               </div>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 flex-col">
-                  <div class="text-[#1b110e]" data-icon="User" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#1b110e] text-base font-bold leading-tight">Our Mission</h2>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">
-                      To empower businesses with innovative PR marketing solutions that drive growth and build lasting brand value.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 flex-col">
-                  <div class="text-[#1b110e]" data-icon="Briefcase" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#1b110e] text-base font-bold leading-tight">Our Values</h2>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">Integrity, creativity, collaboration, and a relentless pursuit of excellence.</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Our Mission</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        To empower businesses with innovative PR marketing solutions that drive growth and build lasting brand value.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 flex-col">
-                  <div class="text-[#1b110e]" data-icon="Lightbulb" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"
-                      ></path>
-                    </svg>
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Our Values</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">Integrity, creativity, collaboration, and a relentless pursuit of excellence.</p>
+                    </div>
                   </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#1b110e] text-base font-bold leading-tight">Our Approach</h2>
-                    <p class="text-[#955d50] text-sm font-normal leading-normal">
-                      We combine strategic thinking, data-driven insights, and creative execution to deliver tailored solutions that exceed expectations.
-                    </p>
+                </div>
+                <div class="group relative">
+                  <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h2 class="text-[#1b110e] text-xl font-bold leading-tight">Our Approach</h2>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed">
+                        We combine strategic thinking, data-driven insights, and creative execution to deliver tailored solutions that exceed expectations.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col gap-10 px-4 py-10 @container">
-              <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-10 py-10 w-full @container items-center">
+              <div class="flex flex-col gap-4 px-4 md:px-10 max-w-7xl w-full">
                 <h1
-                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                  class="text-[#1b110e] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                 >
                   Client Testimonials
                 </h1>
-                <p class="text-[#1b110e] text-base font-normal leading-normal max-w-[720px]">
+                <p class="text-[#1b110e] text-base font-normal leading-normal">
                   Don't just take our word for it—hear what our clients have to say about our exceptional PR services.
                 </p>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
                 <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6">
                   <div class="text-[#e04a28]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
@@ -329,9 +529,9 @@
                 </div>
               </div>
             </div>
-            <div class="@container bg-[#e04a28] text-white">
-              <div class="flex flex-col justify-center items-center gap-6 px-4 py-16 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-24">
-                <div class="flex flex-col gap-4 text-center max-w-3xl">
+            <div class="w-full @container bg-[#e04a28] text-white flex justify-center">
+              <div class="flex flex-col justify-center items-center gap-6 py-16 max-w-7xl w-full px-4 md:px-10 @[480px]:gap-8 @[480px]:py-24">
+                <div class="flex flex-col gap-4 text-center w-full">
                   <h2
                     class="text-white tracking-light text-[32px] font-black leading-tight @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                   >
@@ -352,9 +552,9 @@
             </div>
           </div>
         </div>
-        <footer class="flex justify-center">
-          <div class="flex max-w-[960px] flex-1 flex-col">
-            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+        <footer class="flex w-full justify-center">
+          <div class="flex max-w-7xl w-full flex-1 flex-col px-4 md:px-10">
+            <div class="flex flex-col gap-6 py-10 text-center w-full @container">
               <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
                 <a class="text-[#955d50] text-base font-normal leading-normal min-w-40" href="#">Services</a>
                 <a class="text-[#955d50] text-base font-normal leading-normal min-w-40" href="#">Case Studies</a>
@@ -391,10 +591,110 @@
                 </a>
               </div>
               <p class="text-[#955d50] text-base font-normal leading-normal">© 2024 Chris Austin PR. All rights reserved.</p>
-            </footer>
+            </div>
           </div>
         </footer>
       </div>
     </div>
+    <script>
+      // Mobile menu functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.querySelector('.md\\:hidden.flex.items-center');
+        if (mobileMenuButton) {
+          // Create mobile menu container (initially hidden)
+          const mobileMenu = document.createElement('div');
+          mobileMenu.className = 'fixed top-[72px] left-0 right-0 bg-[#fbf9f8] border-t border-[#e6d5d1] shadow-lg py-4 flex-col items-center hidden z-40';
+          
+          // Add menu items
+          mobileMenu.innerHTML = `
+            <a class="text-[#1b110e] text-base font-medium leading-normal py-3 block text-center w-full hover:bg-[#f3eae8]" href="#">Services</a>
+            <a class="text-[#1b110e] text-base font-medium leading-normal py-3 block text-center w-full hover:bg-[#f3eae8]" href="#">Case Studies</a>
+            <a class="text-[#1b110e] text-base font-medium leading-normal py-3 block text-center w-full hover:bg-[#f3eae8]" href="#">About</a>
+            <a class="text-[#1b110e] text-base font-medium leading-normal py-3 block text-center w-full hover:bg-[#f3eae8]" href="#">Contact</a>
+          `;
+          
+          // Add to document
+          document.body.appendChild(mobileMenu);
+          
+          // Toggle menu on button click
+          mobileMenuButton.addEventListener('click', function() {
+            if (mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.remove('hidden');
+              mobileMenu.classList.add('flex');
+            } else {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('flex');
+            }
+          });
+        }
+      });
+      
+      // Function to handle scroll events
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        const scrollPosition = window.scrollY;
+        
+        // Add shadow to header when scrolled down
+        if (scrollPosition > 50) {
+          header.classList.add('shadow-md');
+          header.classList.add('bg-opacity-95');
+        } else {
+          header.classList.remove('shadow-md');
+          header.classList.remove('bg-opacity-95');
+        }
+        
+        // Apply parallax effect to hero section background
+        const heroSection = document.querySelector('.bg-fixed');
+        if (heroSection) {
+          // Adjust the background position based on scroll for smoother parallax effect
+          // Slower movement creates a more subtle, premium feel
+          const yPos = scrollPosition * 0.15;
+          heroSection.style.backgroundPosition = 'center calc(50% + ' + yPos + 'px)';
+          
+          // Enhanced scale effect for full-width parallax
+          const scale = 1 + scrollPosition * 0.0008;
+          if (scale < 1.2) { // Limit the maximum scale
+            heroSection.style.backgroundSize = (scale * 100) + '% auto';
+          }
+        }
+        
+        // Add smooth appearance animations to sections as they come into view
+        const sections = document.querySelectorAll('.flex.flex-col.gap-10.py-10.w-full.items-center');
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (sectionTop < windowHeight * 0.85) {
+            section.classList.add('opacity-100');
+            section.classList.remove('opacity-80');
+            
+            // Find the content container within the section
+            const contentContainer = section.querySelector('.max-w-7xl');
+            if (contentContainer) {
+              contentContainer.classList.add('opacity-100');
+              contentContainer.classList.remove('opacity-90');
+              contentContainer.classList.remove('translate-y-4');
+            }
+          }
+        });
+      });
+      
+      // Initialize section animations
+      document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.flex.flex-col.gap-10.py-10.w-full.items-center');
+        sections.forEach(section => {
+          section.classList.add('transition-opacity', 'duration-700', 'opacity-80');
+          
+          // Add animation to content containers
+          const contentContainer = section.querySelector('.max-w-7xl');
+          if (contentContainer) {
+            contentContainer.classList.add('transition-all', 'duration-700', 'opacity-90', 'translate-y-4');
+          }
+        });
+        
+        // Ensure the parallax is applied immediately on page load
+        window.dispatchEvent(new Event('scroll'));
+      });
+    </script>
   </body>
 </html>
