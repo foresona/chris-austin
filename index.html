@@ -109,8 +109,8 @@
   <body class="overflow-x-hidden w-full m-0 p-0">
     <div class="relative flex flex-col bg-[#fbf9f8] min-h-screen w-full group/design-root" style='font-family: "Raleway", sans-serif;'>
       <div class="flex h-full grow flex-col w-full overflow-hidden">
-        <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f3eae8] px-6 md:px-10 py-3 bg-[#fbf9f8] transition-all duration-300 backdrop-blur-sm bg-opacity-90 w-full">
-          <div class="flex items-center gap-4 text-[#1b110e]">
+        <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap px-6 md:px-10 py-3 transition-all duration-300 w-full">
+          <div class="flex items-center gap-4 text-white">
             <div class="size-4">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -128,20 +128,19 @@
               </svg>
             </div>
             <h2 class="text-[#1b110e] text-lg font-bold leading-tight tracking-[-0.015em]">Chris Austin PR</h2>
-          </div>
-          <div class="flex flex-1 justify-end gap-4 md:gap-8">
+          </div>            <div class="flex flex-1 justify-end gap-4 md:gap-8">
             <div class="hidden md:flex items-center gap-4 lg:gap-9">
-              <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">Services</a>
-              <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">Case Studies</a>
-              <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">About</a>
-              <a class="text-[#1b110e] text-sm font-medium leading-normal" href="#">Contact</a>
+              <a class="text-white text-sm font-medium leading-normal hover:text-[#fbf9f8]" href="#">Services</a>
+              <a class="text-white text-sm font-medium leading-normal hover:text-[#fbf9f8]" href="#">Case Studies</a>
+              <a class="text-white text-sm font-medium leading-normal hover:text-[#fbf9f8]" href="#">About</a>
+              <a class="text-white text-sm font-medium leading-normal hover:text-[#fbf9f8]" href="#">Contact</a>
             </div>
             <button
-              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#e04a28] text-[#fbf9f8] text-sm font-bold leading-normal tracking-[0.015em]"
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#e04a28] text-[#fbf9f8] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#c4371a] transition-all"
             >
               <span class="truncate">Get Started</span>
             </button>
-            <button class="md:hidden flex items-center justify-center w-10 h-10 text-[#1b110e]">
+            <button class="md:hidden flex items-center justify-center w-10 h-10 text-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
               </svg>
@@ -190,9 +189,10 @@
                   We offer a comprehensive suite of PR marketing services tailored to meet your unique needs and objectives.
                 </p>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
+              <div class="relative w-full max-w-7xl px-4 md:px-10 py-4">
+                <div class="flex overflow-x-auto scrollbar-hide gap-6 pb-4 snap-x snap-mandatory services-carousel">
                 <!-- Strategic PR Planning -->
-                <div class="group relative">
+                <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
                   <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
@@ -212,7 +212,7 @@
                 </div>
                 
                 <!-- Data-Driven Campaigns -->
-                <div class="group relative">
+                <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
                   <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
@@ -232,7 +232,7 @@
                 </div>
                 
                 <!-- Community Engagement -->
-                <div class="group relative">
+                <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
                   <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
@@ -252,7 +252,7 @@
                 </div>
                 
                 <!-- Crisis Management -->
-                <div class="group relative">
+                <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
                   <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
@@ -272,7 +272,7 @@
                 </div>
                 
                 <!-- Brand Visibility -->
-                <div class="group relative">
+                <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
                   <div class="flex flex-1 gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 flex-col h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     <div class="text-[#e04a28] w-12 h-12 flex items-center justify-center">
@@ -291,6 +291,30 @@
                   </div>
                 </div>
               </div>
+              
+              <!-- Carousel Navigation Controls -->
+              <div class="flex justify-between items-center mt-4">
+                <button class="service-prev-btn flex items-center justify-center w-10 h-10 rounded-full border border-[#e6d5d1] bg-white text-[#1b110e] hover:bg-[#e04a28] hover:text-white hover:border-[#e04a28] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L96.49,128Z"></path>
+                  </svg>
+                </button>
+                
+                <!-- Carousel Indicator Dots -->
+                <div class="flex space-x-2 service-dots">
+                  <button class="w-3 h-3 rounded-full bg-[#e04a28]" data-index="0"></button>
+                  <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="1"></button>
+                  <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="2"></button>
+                  <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="3"></button>
+                  <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="4"></button>
+                </div>
+                
+                <button class="service-next-btn flex items-center justify-center w-10 h-10 rounded-full border border-[#e6d5d1] bg-white text-[#1b110e] hover:bg-[#e04a28] hover:text-white hover:border-[#e04a28] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
             <div class="flex flex-col gap-10 py-10 w-full @container items-center">
               <div class="flex flex-col gap-4 px-4 md:px-10 max-w-7xl w-full">
@@ -303,79 +327,120 @@
                   Explore our success stories and see how we've helped businesses like yours achieve remarkable growth.
                 </p>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
-                <!-- Tech Startup Success -->
-                <div class="group relative">
-                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
+                <!-- Featured Case Study (Takes 2 columns on larger screens) -->
+                <div class="group relative sm:col-span-2 lg:col-span-2 lg:row-span-2">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] hover:border-[#e04a28] hover:bg-white relative overflow-hidden h-full">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    <div class="relative overflow-hidden rounded-xl">
+                    <div class="relative overflow-hidden">
                       <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
                       <div
-                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover"
                         style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2wTZUnDdFOACjZt-047wo1_380FIKHyDxqam1Mv4fw9_D7bP78wBJjPEHiOZE3z3fGlVbPX_Hn3az4ptJQ94dmHt887lEwH2XZJO5oRef6vB2N1Yk_gBmfyHd6BE4JYXtJwNXfdOz5wgJYtUOATEsC4RBhS863mawi-mFY9-NlE_Ml74hIfccnJeMKmEGoV13Jfpy34dQMGMODaRg6TJ7yss7N8R1P3Si5jSZILkjJadM1JwrO6RRp8R3PLZgL_asVKXQKQBR-dU");'
                       ></div>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-[#1b110e] text-base font-bold leading-normal">Tech Startup Success</p>
-                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">Increased brand awareness by 200% and secured media coverage in top industry publications.</p>
+                    <div class="p-6">
+                      <span class="text-[#e04a28] text-xs font-bold uppercase tracking-wider">Featured Case Study</span>
+                      <h3 class="text-[#1b110e] text-2xl font-bold leading-tight mt-2">Tech Startup Success</h3>
+                      <p class="text-[#955d50] text-base font-normal leading-relaxed mt-3">
+                        When TechInnovate approached us, they were struggling to gain visibility in a crowded market. Our comprehensive PR strategy focused on highlighting their innovative technology and securing coverage in top-tier tech publications.
+                      </p>
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-[#f3eae8] text-[#955d50] text-xs rounded-full">Brand Strategy</span>
+                        <span class="px-3 py-1 bg-[#f3eae8] text-[#955d50] text-xs rounded-full">Media Relations</span>
+                        <span class="px-3 py-1 bg-[#f3eae8] text-[#955d50] text-xs rounded-full">Content Marketing</span>
+                      </div>
+                      <div class="mt-6">
+                        <a href="#" class="inline-flex items-center text-[#e04a28] font-medium hover:underline">
+                          View Case Study
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1" viewBox="0 0 256 256">
+                            <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Retail Brand Transformation -->
                 <div class="group relative">
-                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] hover:border-[#e04a28] hover:bg-white relative overflow-hidden h-full">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    <div class="relative overflow-hidden rounded-xl">
+                    <div class="relative overflow-hidden">
                       <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
                       <div
-                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover"
                         style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2uyKhWhdxrJ9sQncCN2EQsLroTGtUPHzXsxuWgYrTOfRS7Mat6eVIAj7QB4S7bhXLSZ1i9Vx8l7PRJcNGm4zyZEvULdEUVxut1o7ePu2ue6ws7RouzWvQx5Zo_nlzVCjlVr7R2qM4jPhx9aw7ZvLEmmWQR9whANIMq40Ik631ZLC7pjNIMppXFmqcCk5dA3CLdb9uF646OiXMkReUXX3PeaQbRURExcPMAJONaoyb0dTVK_wIdG4l4-Ia2_4AGBp0Hsq0p2dWXFA");'
                       ></div>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-[#1b110e] text-base font-bold leading-normal">Retail Brand Transformation</p>
-                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">Revitalized brand image, resulting in a 50% increase in sales and customer engagement.</p>
+                    <div class="p-6">
+                      <h3 class="text-[#1b110e] text-xl font-bold leading-tight">Retail Brand Transformation</h3>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-2">
+                        Revitalized brand image, resulting in a 50% increase in sales and customer engagement.
+                      </p>
+                      <div class="mt-4">
+                        <a href="#" class="inline-flex items-center text-[#e04a28] font-medium hover:underline">
+                          View Case Study
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1" viewBox="0 0 256 256">
+                            <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Nonprofit Awareness Campaign -->
                 <div class="group relative">
-                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] hover:border-[#e04a28] hover:bg-white relative overflow-hidden h-full">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    <div class="relative overflow-hidden rounded-xl">
+                    <div class="relative overflow-hidden">
                       <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
                       <div
-                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover"
                         style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2RAgDAzYHB8_JUVlcB-90tiHJPQAXBz3gLaQAIuAzbt2u1xdB-gI08RHxzDYVvEFExFp5am-k9U8aPjMeso0BB3BswsXw6WT6jxILqMo0eguDgad2IoRP-WI9eT9VqSUQnjON6eNn5iEAAHeSviKRu3KNdQH2qhiszhOCYmvOgHVu83SeNvNV7rNtg2zdMn2dtrkG8-XIiNOVmIazYCARKJxlhtH8YMxixNKdLYRlYiBbb_WU59AKKK8FIZ8wew5b9gWiecVtl1c");'
                       ></div>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-[#1b110e] text-base font-bold leading-normal">Nonprofit Awareness Campaign</p>
-                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">
+                    <div class="p-6">
+                      <h3 class="text-[#1b110e] text-xl font-bold leading-tight">Nonprofit Awareness Campaign</h3>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-2">
                         Successfully raised awareness and support for a critical cause, exceeding fundraising goals by 30%.
                       </p>
+                      <div class="mt-4">
+                        <a href="#" class="inline-flex items-center text-[#e04a28] font-medium hover:underline">
+                          View Case Study
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1" viewBox="0 0 256 256">
+                            <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Global Brand Expansion -->
-                <div class="group relative">
-                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-4 hover:border-[#e04a28] hover:bg-white relative overflow-hidden">
+                <div class="group relative lg:col-span-1">
+                  <div class="flex flex-col gap-3 transition-all duration-300 hover:shadow-lg rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] hover:border-[#e04a28] hover:bg-white relative overflow-hidden h-full">
                     <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    <div class="relative overflow-hidden rounded-xl">
+                    <div class="relative overflow-hidden">
                       <div class="absolute inset-0 bg-[#e04a28] opacity-0 transition-opacity group-hover:opacity-10"></div>
                       <div
-                        class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA32f3JrcvLpJS9hje1rU00gZl8gcvRggrFsO-_AgB3oIEJMJZjajuilFIxroZ-2nAZ8p73HdlwC2QeFbOd0DGU7WrSAq86FCGTQp5Uft5gYZ1Ccv2E2isEx6UVKtQ3bJdGL5V9ClTnzpWjpUZhY1nPiIfN3kIm2cHf5htPi7eMku0aKgQw5Qs4WyvcRs3VxHwhHbUe9q-TXXOY4dpPgqQjomVKjtnPuC0UIYBrUOeiRCDgxSW6CZB5j_mSP_mS1ExAOHih3KLLQjA");'
-                      ></div>
+                        class="w-full bg-center bg-no-repeat aspect-video bg-cover"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCcV2pYZ_pr3LoKQaiL1PDNXbs-RBaBvEw1wP_t8e9ruQylOssj-0x_oZp_JoWqaszPXDqUVvs_gtJ2yaa2aarunZNpJVV32AzUu7j1CfOG261KMY40sYtLGWfFKMUmnjGuS9DethHD1ji9pNl5xCafe3fhLjren_hpIETZSal8Mtr-JrMzlhTjqavSeN0bXNSzGYnAWokVPwS-N5ScJo6sfkeYCc0UHaLvFVtA6lgRydv9g0BbUgxhvB3bgw3Wvt4EkeKY-71a6I");'                      ></div>
                     </div>
-                    <div class="mt-2">
-                      <p class="text-[#1b110e] text-base font-bold leading-normal">Global Brand Expansion</p>
-                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-1">
+                    <div class="p-6">
+                      <h3 class="text-[#1b110e] text-xl font-bold leading-tight">Global Brand Expansion</h3>
+                      <p class="text-[#955d50] text-sm font-normal leading-relaxed mt-2">
                         Helped a national brand successfully expand into international markets with tailored PR strategies.
                       </p>
+                      <div class="mt-4">
+                        <a href="#" class="inline-flex items-center text-[#e04a28] font-medium hover:underline">
+                          View Case Study
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1" viewBox="0 0 256 256">
+                            <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -458,74 +523,118 @@
                   Don't just take our word for it—hear what our clients have to say about our exceptional PR services.
                 </p>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl w-full px-4 md:px-10 py-4">
-                <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6">
-                  <div class="text-[#e04a28]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
-                      ></path>
-                    </svg>
+              <div class="relative w-full max-w-7xl px-4 md:px-10 py-4">
+                <div class="flex overflow-x-auto scrollbar-hide gap-6 pb-4 snap-x snap-mandatory">
+                  <!-- First testimonial -->
+                  <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
+                    <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                      <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div class="text-[#e04a28]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                          <path
+                            d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <p class="text-[#1b110e] text-base italic leading-relaxed">Chris Austin PR transformed our brand visibility completely. Their strategic approach to media relations resulted in features in top industry publications and a 45% increase in website traffic. Their team is responsive, creative, and truly invested in our success.</p>
+                      <div class="flex items-center gap-3 mt-2">
+                        <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/women/42.jpg");'></div>
+                        <div>
+                          <p class="text-[#1b110e] font-bold">Sarah Johnson</p>
+                          <p class="text-[#955d50] text-sm">CEO, TechInnovate</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <p class="text-[#1b110e] text-base italic leading-relaxed">Chris Austin PR transformed our brand visibility completely. Their strategic approach to media relations resulted in features in top industry publications and a 45% increase in website traffic. Their team is responsive, creative, and truly invested in our success.</p>
-                  <div class="flex items-center gap-3 mt-2">
-                    <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/women/42.jpg");'></div>
-                    <div>
-                      <p class="text-[#1b110e] font-bold">Sarah Johnson</p>
-                      <p class="text-[#955d50] text-sm">CEO, TechInnovate</p>
+                  
+                  <!-- Second testimonial -->
+                  <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
+                    <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                      <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div class="text-[#e04a28]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                          <path
+                            d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <p class="text-[#1b110e] text-base italic leading-relaxed">Working with Chris Austin PR has been a game-changer for our retail brand. Their data-driven approach to PR campaigns helped us reach new audiences and increase our social media engagement by over 200%. They truly understand our vision and have become an extension of our team.</p>
+                      <div class="flex items-center gap-3 mt-2">
+                        <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/men/32.jpg");'></div>
+                        <div>
+                          <p class="text-[#1b110e] font-bold">Michael Chen</p>
+                          <p class="text-[#955d50] text-sm">Marketing Director, Urban Styles</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Third testimonial -->
+                  <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
+                    <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                      <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div class="text-[#e04a28]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                          <path
+                            d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <p class="text-[#1b110e] text-base italic leading-relaxed">The team at Chris Austin PR exceeded our expectations with their nonprofit awareness campaign. Their strategic planning and media connections helped us raise 40% more than our fundraising goal. Their passion for our cause was evident in everything they did.</p>
+                      <div class="flex items-center gap-3 mt-2">
+                        <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/women/68.jpg");'></div>
+                        <div>
+                          <p class="text-[#1b110e] font-bold">Amanda Rodriguez</p>
+                          <p class="text-[#955d50] text-sm">Executive Director, Hope Foundation</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Fourth testimonial -->
+                  <div class="group relative flex-none w-[280px] md:w-[320px] snap-center">
+                    <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6 h-full transition-all duration-300 hover:border-[#e04a28] hover:bg-white hover:shadow-lg relative overflow-hidden">
+                      <div class="absolute top-0 left-0 w-full h-1 bg-[#e04a28] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div class="text-[#e04a28]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
+                          <path
+                            d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <p class="text-[#1b110e] text-base italic leading-relaxed">Chris Austin PR helped us launch our new product with incredible impact. Their comprehensive PR strategy generated buzz across multiple channels, resulting in feature articles in key publications and a 70% increase in product inquiries. Their expertise is unmatched!</p>
+                      <div class="flex items-center gap-3 mt-2">
+                        <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/men/52.jpg");'></div>
+                        <div>
+                          <p class="text-[#1b110e] font-bold">David Thompson</p>
+                          <p class="text-[#955d50] text-sm">Product Manager, NextGen Innovations</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6">
-                  <div class="text-[#e04a28]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
-                      ></path>
+                
+                <!-- Carousel Navigation Controls -->
+                <div class="flex justify-between items-center mt-4">
+                  <button class="testimonial-prev-btn flex items-center justify-center w-10 h-10 rounded-full border border-[#e6d5d1] bg-white text-[#1b110e] hover:bg-[#e04a28] hover:text-white hover:border-[#e04a28] transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L96.49,128Z"></path>
                     </svg>
+                  </button>
+                  
+                  <!-- Carousel Indicator Dots -->
+                  <div class="flex space-x-2 testimonial-dots">
+                    <button class="w-3 h-3 rounded-full bg-[#e04a28]" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="2"></button>
+                    <button class="w-3 h-3 rounded-full bg-[#e6d5d1]" data-index="3"></button>
                   </div>
-                  <p class="text-[#1b110e] text-base italic leading-relaxed">Working with Chris Austin PR has been a game-changer for our retail brand. Their data-driven approach to PR campaigns helped us reach new audiences and increase our social media engagement by over 200%. They truly understand our vision and have become an extension of our team.</p>
-                  <div class="flex items-center gap-3 mt-2">
-                    <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/men/32.jpg");'></div>
-                    <div>
-                      <p class="text-[#1b110e] font-bold">Michael Chen</p>
-                      <p class="text-[#955d50] text-sm">Marketing Director, Urban Styles</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6">
-                  <div class="text-[#e04a28]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
-                      ></path>
+                  
+                  <button class="testimonial-next-btn flex items-center justify-center w-10 h-10 rounded-full border border-[#e6d5d1] bg-white text-[#1b110e] hover:bg-[#e04a28] hover:text-white hover:border-[#e04a28] transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path>
                     </svg>
-                  </div>
-                  <p class="text-[#1b110e] text-base italic leading-relaxed">The team at Chris Austin PR exceeded our expectations with their nonprofit awareness campaign. Their strategic planning and media connections helped us raise 40% more than our fundraising goal. Their passion for our cause was evident in everything they did.</p>
-                  <div class="flex items-center gap-3 mt-2">
-                    <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/women/68.jpg");'></div>
-                    <div>
-                      <p class="text-[#1b110e] font-bold">Amanda Rodriguez</p>
-                      <p class="text-[#955d50] text-sm">Executive Director, Hope Foundation</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col gap-3 rounded-lg border border-[#e6d5d1] bg-[#fbf9f8] p-6">
-                  <div class="text-[#e04a28]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <p class="text-[#1b110e] text-base italic leading-relaxed">Chris Austin PR helped us launch our new product with incredible impact. Their comprehensive PR strategy generated buzz across multiple channels, resulting in feature articles in key publications and a 70% increase in product inquiries. Their expertise is unmatched!</p>
-                  <div class="flex items-center gap-3 mt-2">
-                    <div class="size-12 rounded-full overflow-hidden bg-cover bg-center" style='background-image: url("https://randomuser.me/api/portraits/men/52.jpg");'></div>
-                    <div>
-                      <p class="text-[#1b110e] font-bold">David Thompson</p>
-                      <p class="text-[#955d50] text-sm">Product Manager, NextGen Innovations</p>
-                    </div>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -627,6 +736,9 @@
             }
           });
         }
+        
+        // Initialize carousel functionality for Services and Testimonials
+        initCarousels();
       });
       
       // Function to handle scroll events
@@ -634,13 +746,35 @@
         const header = document.querySelector('header');
         const scrollPosition = window.scrollY;
         
-        // Add shadow to header when scrolled down
+        // Add shadow and background to header when scrolled down
         if (scrollPosition > 50) {
           header.classList.add('shadow-md');
+          header.classList.add('bg-[#fbf9f8]');
           header.classList.add('bg-opacity-95');
+          header.classList.add('backdrop-blur-sm');
+          header.classList.add('border-b');
+          header.classList.add('border-solid');
+          header.classList.add('border-b-[#f3eae8]');
+          document.querySelectorAll('header a, header .flex.items-center.gap-4').forEach(item => {
+            item.classList.remove('text-white');
+            item.classList.add('text-[#1b110e]');
+          });
+          document.querySelector('header button.md\\:hidden').classList.remove('text-white');
+          document.querySelector('header button.md\\:hidden').classList.add('text-[#1b110e]');
         } else {
           header.classList.remove('shadow-md');
+          header.classList.remove('bg-[#fbf9f8]');
           header.classList.remove('bg-opacity-95');
+          header.classList.remove('backdrop-blur-sm');
+          header.classList.remove('border-b');
+          header.classList.remove('border-solid');
+          header.classList.remove('border-b-[#f3eae8]');
+          document.querySelectorAll('header a, header .flex.items-center.gap-4').forEach(item => {
+            item.classList.remove('text-[#1b110e]');
+            item.classList.add('text-white');
+          });
+          document.querySelector('header button.md\\:hidden').classList.remove('text-[#1b110e]');
+          document.querySelector('header button.md\\:hidden').classList.add('text-white');
         }
         
         // Apply parallax effect to hero section background
@@ -695,6 +829,92 @@
         // Ensure the parallax is applied immediately on page load
         window.dispatchEvent(new Event('scroll'));
       });
+      
+      // Carousel functionality for Services and Testimonials sections
+      function initCarousels() {
+        // Initialize Services carousel
+        initCarousel('.services-carousel', '.service-prev-btn', '.service-next-btn', '.service-dots');
+        
+        // Initialize Testimonials carousel
+        initCarousel('div:has(.testimonial-dots) .flex.overflow-x-auto', '.testimonial-prev-btn', '.testimonial-next-btn', '.testimonial-dots');
+      }
+      
+      function initCarousel(carouselSelector, prevBtnSelector, nextBtnSelector, dotsSelector) {
+        const carousel = document.querySelector(carouselSelector);
+        if (!carousel) return; // Exit if carousel not found
+        
+        const prevBtn = document.querySelector(prevBtnSelector);
+        const nextBtn = document.querySelector(nextBtnSelector);
+        const dotButtons = document.querySelectorAll(`${dotsSelector} button`);
+        const slides = carousel.querySelectorAll('.snap-center');
+        const slideWidth = slides[0]?.offsetWidth || 0;
+        const slideGap = 24; // Gap between slides (should match the gap-6 class = 1.5rem = 24px)
+        let currentIndex = 0;
+        
+        // Function to scroll to a specific slide
+        function scrollToSlide(index) {
+          if (index < 0) index = 0;
+          if (index >= slides.length) index = slides.length - 1;
+          
+          currentIndex = index;
+          const scrollPosition = index * (slideWidth + slideGap);
+          
+          carousel.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          
+          // Update active dot indicator
+          updateActiveDot();
+        }
+        
+        // Update the active dot indicator
+        function updateActiveDot() {
+          dotButtons.forEach((dot, i) => {
+            if (i === currentIndex) {
+              dot.classList.remove('bg-[#e6d5d1]');
+              dot.classList.add('bg-[#e04a28]');
+            } else {
+              dot.classList.remove('bg-[#e04a28]');
+              dot.classList.add('bg-[#e6d5d1]');
+            }
+          });
+        }
+        
+        // Add event listeners to navigation buttons
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            scrollToSlide(currentIndex - 1);
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            scrollToSlide(currentIndex + 1);
+          });
+        }
+        
+        // Add event listeners to dot indicators
+        dotButtons.forEach((dot, i) => {
+          dot.addEventListener('click', () => {
+            scrollToSlide(i);
+          });
+        });
+        
+        // Handle scroll events to update the active dot
+        carousel.addEventListener('scroll', () => {
+          const scrollPosition = carousel.scrollLeft;
+          const newIndex = Math.round(scrollPosition / (slideWidth + slideGap));
+          
+          if (newIndex !== currentIndex) {
+            currentIndex = newIndex;
+            updateActiveDot();
+          }
+        });
+        
+        // Initialize active dot
+        updateActiveDot();
+      }
     </script>
   </body>
 </html>
