@@ -9,6 +9,10 @@ export default defineConfig({
 
   // Self-hosted backend configuration
   contentApiUrlOverride: '/api/tina/gql',
+  
+  // This tells TinaCMS to use self-hosted mode, not TinaCloud
+  token: undefined,
+  clientId: null,
 
   build: {
     outputFolder: 'admin',
