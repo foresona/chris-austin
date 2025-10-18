@@ -1,0 +1,72 @@
+fragment PostParts on Post {
+  __typename
+  title
+  excerpt
+  date
+  coverImage
+  author
+  featured
+  category
+  body
+}
+
+fragment TestimonialParts on Testimonial {
+  __typename
+  clientName
+  clientPosition
+  company
+  clientImage
+  companyLogo
+  testimonial
+  rating
+  featured
+  date
+}
+
+fragment PageParts on Page {
+  __typename
+  title
+  pageTitle
+  subtitle
+  description
+  heroTitle
+  heroSubtitle
+  heroDescription
+  ctaTitle
+  ctaDescription
+  ctaButtonText
+  stats {
+    __typename
+    label
+    value
+    description
+  }
+  aboutTitle
+  aboutDescription
+  story
+  mission
+  values {
+    __typename
+    title
+    description
+    icon
+  }
+  team {
+    __typename
+    name
+    position
+    bio
+    image
+  }
+  email
+  phone
+  address
+  officeHours
+  socialMedia {
+    __typename
+    twitter
+    linkedin
+    instagram
+  }
+  body
+}
