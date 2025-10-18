@@ -11,11 +11,13 @@ Your Chris Austin PR website has been successfully deployed to Vercel.
 ## ✅ What's Been Configured
 
 ### Environment Variables Added:
+
 - ✅ `NEXTAUTH_SECRET` - Secure authentication secret
 - ✅ `NEXTAUTH_URL` - Your production URL
 - ✅ `TINA_PUBLIC_IS_LOCAL` - Set to false for production mode
 
 ### Build Configuration:
+
 - ✅ `.npmrc` file added with `legacy-peer-deps=true`
 - ✅ Database configuration updated to use local mode during build
 - ✅ Build completes successfully
@@ -42,6 +44,7 @@ You can edit the users file to add yourself as an admin:
 For GitHub-based authentication:
 
 1. **Create GitHub OAuth App:**
+
    - Go to https://github.com/settings/developers
    - Click "New OAuth App"
    - **Application name:** Chris Austin CMS
@@ -52,10 +55,11 @@ For GitHub-based authentication:
    - Generate a **Client Secret**
 
 2. **Add to Vercel Environment Variables:**
+
    ```bash
    vercel env add GITHUB_ID production
    # Paste your Client ID
-   
+
    vercel env add GITHUB_SECRET production
    # Paste your Client Secret
    ```
@@ -70,6 +74,7 @@ For GitHub-based authentication:
 For content versioning and multi-user collaboration:
 
 1. **Create MongoDB Atlas Account:**
+
    - Sign up at https://www.mongodb.com/cloud/atlas
    - Create a free M0 cluster
    - Create database user with username/password
@@ -77,22 +82,24 @@ For content versioning and multi-user collaboration:
    - Get connection string
 
 2. **Create GitHub Personal Access Token:**
+
    - Go to https://github.com/settings/tokens
    - Generate new token (classic)
    - Select scopes: `repo` and `workflow`
    - Copy the token
 
 3. **Add Environment Variables to Vercel:**
+
    ```bash
    vercel env add MONGODB_URI production
    # Paste your MongoDB connection string
-   
+
    vercel env add GITHUB_PERSONAL_ACCESS_TOKEN production
    # Paste your GitHub token
-   
+
    vercel env add GITHUB_OWNER production
    # Enter: foresona
-   
+
    vercel env add GITHUB_REPO production
    # Enter: chris-austin
    ```
@@ -142,16 +149,19 @@ vercel env ls
 ## 🐛 Troubleshooting
 
 ### "Missing client ID" Error
+
 - Ensure `NEXTAUTH_SECRET` is set in Vercel
 - Ensure `NEXTAUTH_URL` matches your production URL exactly
 - For GitHub OAuth, ensure `GITHUB_ID` and `GITHUB_SECRET` are set
 
 ### Build Fails
+
 - Check Vercel deployment logs
 - Ensure all dependencies are installed
 - Verify `.npmrc` has `legacy-peer-deps=true`
 
 ### Content Not Updating
+
 - If using MongoDB mode, check database connection
 - If using local mode, content updates require new deployment
 - Verify GitHub token has correct permissions
@@ -159,6 +169,7 @@ vercel env ls
 ## 📞 Support
 
 If you encounter any issues:
+
 1. Check the Vercel deployment logs
 2. Review the error messages in browser console
 3. Verify all environment variables are set correctly
