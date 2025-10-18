@@ -5,6 +5,7 @@ This guide will help you deploy the Chris Austin PR Agency website with a self-h
 ## 🎯 Overview
 
 We're using:
+
 - **Next.js 15** - Frontend framework
 - **Tina CMS (Self-Hosted)** - Content management with authentication
 - **MongoDB Atlas** - Free database tier for storing content
@@ -24,16 +25,19 @@ We're using:
 ## 🚀 Step 1: Set Up MongoDB Atlas (Free)
 
 ### 1.1 Create MongoDB Account
+
 1. Go to https://www.mongodb.com/cloud/atlas/register
 2. Sign up for free (no credit card required)
 
 ### 1.2 Create a Cluster
+
 1. Click "Build a Database"
 2. Choose **M0 FREE** tier
 3. Select a region close to your users
 4. Click "Create Cluster"
 
 ### 1.3 Create Database User
+
 1. Go to "Database Access" in left sidebar
 2. Click "Add New Database User"
 3. Choose "Password" authentication
@@ -43,6 +47,7 @@ We're using:
 7. Click "Add User"
 
 ### 1.4 Allow Network Access
+
 1. Go to "Network Access" in left sidebar
 2. Click "Add IP Address"
 3. Click "Allow Access from Anywhere" (0.0.0.0/0)
@@ -50,6 +55,7 @@ We're using:
 4. Click "Confirm"
 
 ### 1.5 Get Connection String
+
 1. Go back to "Database" view
 2. Click "Connect" on your cluster
 3. Choose "Connect your application"
@@ -65,6 +71,7 @@ We're using:
 ## 🔑 Step 2: Create GitHub Personal Access Token
 
 ### 2.1 Generate Token
+
 1. Go to https://github.com/settings/tokens
 2. Click "Generate new token" → "Generate new token (classic)"
 3. Name it: `Tina CMS - Chris Austin`
@@ -76,6 +83,7 @@ We're using:
 7. **Copy the token immediately** (you won't see it again!)
 
 ### 2.2 Token Details
+
 - This token allows Tina to commit content changes to GitHub
 - Format: `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 - **Save this** - you'll need it for `GITHUB_PERSONAL_ACCESS_TOKEN`
@@ -91,6 +99,7 @@ openssl rand -base64 32
 ```
 
 Or use this Node.js script:
+
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
 ```
@@ -136,6 +145,7 @@ TINA_PUBLIC_IS_LOCAL=false
 ```
 
 #### Important Notes:
+
 - Replace `YOUR_PASSWORD` with your MongoDB password
 - Replace `ghp_xxx...` with your GitHub token
 - Replace `YOUR_GENERATED_SECRET_FROM_STEP_3` with the secret from Step 3
@@ -167,6 +177,7 @@ TINA_PUBLIC_IS_LOCAL=false
 ### 5.2 First Login
 
 The first time you sign in with GitHub:
+
 1. Authorize the application
 2. You'll be redirected back to the admin
 3. You're now authenticated and can edit content!
@@ -174,6 +185,7 @@ The first time you sign in with GitHub:
 ### 5.3 Authorize Additional Users
 
 To allow other GitHub users to access the admin:
+
 1. They need to be part of the `foresona` GitHub organization
 2. OR you can configure authorization in `src/pages/api/tina/[...routes].ts`
 
@@ -182,6 +194,7 @@ To allow other GitHub users to access the admin:
 ## ✅ Step 6: Test the Setup
 
 ### 6.1 Test Admin Access
+
 1. Visit: `https://your-site.vercel.app/admin`
 2. Sign in with GitHub
 3. Try editing a testimonial
@@ -189,6 +202,7 @@ To allow other GitHub users to access the admin:
 5. Changes should commit to GitHub
 
 ### 6.2 Test Live Updates
+
 1. After saving in admin, check GitHub repository
 2. You should see a new commit with your changes
 3. Vercel will auto-deploy the new content
@@ -200,22 +214,23 @@ To allow other GitHub users to access the admin:
 
 Here's a complete list of all required environment variables:
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `MONGODB_URI` | MongoDB connection string | `mongodb+srv://...` |
-| `GITHUB_OWNER` | GitHub organization/user | `foresona` |
-| `GITHUB_REPO` | Repository name | `chris-austin` |
-| `GITHUB_BRANCH` | Git branch to use | `main` |
-| `GITHUB_PERSONAL_ACCESS_TOKEN` | GitHub PAT with repo access | `ghp_xxx...` |
-| `NEXTAUTH_SECRET` | Random secret for NextAuth | Generated string |
-| `NEXTAUTH_URL` | Full URL of your site | `https://your-site.vercel.app` |
-| `TINA_PUBLIC_IS_LOCAL` | Set to `false` for production | `false` |
+| Variable                       | Description                   | Example                        |
+| ------------------------------ | ----------------------------- | ------------------------------ |
+| `MONGODB_URI`                  | MongoDB connection string     | `mongodb+srv://...`            |
+| `GITHUB_OWNER`                 | GitHub organization/user      | `foresona`                     |
+| `GITHUB_REPO`                  | Repository name               | `chris-austin`                 |
+| `GITHUB_BRANCH`                | Git branch to use             | `main`                         |
+| `GITHUB_PERSONAL_ACCESS_TOKEN` | GitHub PAT with repo access   | `ghp_xxx...`                   |
+| `NEXTAUTH_SECRET`              | Random secret for NextAuth    | Generated string               |
+| `NEXTAUTH_URL`                 | Full URL of your site         | `https://your-site.vercel.app` |
+| `TINA_PUBLIC_IS_LOCAL`         | Set to `false` for production | `false`                        |
 
 ---
 
 ## 🎉 Success!
 
 You now have:
+
 - ✅ Website deployed on Vercel
 - ✅ Admin interface accessible at `/admin`
 - ✅ Content stored in MongoDB (free tier)
@@ -238,26 +253,31 @@ You now have:
 ## 🐛 Troubleshooting
 
 ### "Failed to connect to database"
+
 - Check `MONGODB_URI` is correct
 - Verify IP whitelist includes 0.0.0.0/0
 - Check database user has correct permissions
 
 ### "GitHub authentication failed"
+
 - Verify `GITHUB_PERSONAL_ACCESS_TOKEN` is valid
 - Check token has `repo` scope
 - Confirm token hasn't expired
 
 ### "NextAuth error"
+
 - Verify `NEXTAUTH_SECRET` is set
 - Check `NEXTAUTH_URL` matches your domain exactly
 - Must include `https://` protocol
 
 ### "Cannot edit content"
+
 - Sign in with GitHub first
 - Check browser console for errors
 - Verify all environment variables are set in Vercel
 
 ### Admin shows "unauthorized"
+
 - Make sure you're signed in with a GitHub account
 - Check if you have access to the repository
 - Verify NextAuth is configured correctly
@@ -267,11 +287,13 @@ You now have:
 ## 🔄 Making Content Changes
 
 ### Option 1: Via Admin (Recommended)
+
 1. Go to `/admin`
 2. Edit content visually
 3. Save changes
 
 ### Option 2: Via Git
+
 1. Edit files in `content/` folder locally
 2. Commit and push to GitHub
 3. Vercel auto-deploys

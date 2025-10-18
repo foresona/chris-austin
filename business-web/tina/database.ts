@@ -3,12 +3,17 @@ import { createDatabase, createLocalDatabase } from '@tinacms/datalayer'
 import { GitHubProvider } from 'tinacms-gitprovider-github'
 import { MongodbLevel } from 'mongodb-level'
 
+
 const branch = (process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
   "main")
 
 const isLocal =  process.env.TINA_PUBLIC_IS_LOCAL === 'true'
+
+console.log('TinaCMS Database Mode:', isLocal ? 'LOCAL' : 'SELF-HOSTED')
+console.log('MongoDB URI:', process.env.MONGODB_URI ? 'Set' : 'Missing')
+console.log('GitHub Token:', process.env.GITHUB_PERSONAL_ACCESS_TOKEN ? 'Set' : 'Missing')
 
 export default isLocal
   ? createLocalDatabase()
