@@ -6,15 +6,10 @@ import databaseClient from '../../../../tina/__generated__/databaseClient'
 
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === 'true'
 
+// Use LocalBackendAuthProvider for password-based authentication
+// This uses the credentials from content/users/index.json
 const handler = TinaNodeBackend({
-  authProvider: isLocal
-    ? LocalBackendAuthProvider()
-    : AuthJsBackendAuthProvider({
-        authOptions: TinaAuthJSOptions({
-          databaseClient: databaseClient,
-          secret: process.env.NEXTAUTH_SECRET!,
-        }),
-      }),
+  authProvider: LocalBackendAuthProvider(),
   databaseClient,
 })
 
