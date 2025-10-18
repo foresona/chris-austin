@@ -11,11 +11,18 @@ const branch = (process.env.GITHUB_BRANCH ||
 
 const isLocal =  process.env.TINA_PUBLIC_IS_LOCAL === 'true'
 
-console.log('TinaCMS Database Mode:', isLocal ? 'LOCAL' : 'SELF-HOSTED')
-console.log('MongoDB URI:', process.env.MONGODB_URI ? 'Set' : 'Missing')
-console.log('GitHub Token:', process.env.GITHUB_PERSONAL_ACCESS_TOKEN ? 'Set' : 'Missing')
+// Check if we're in a build environment without MongoDB configured
+const hasMongoDb = !!process.env.MONGODB_URI
+const hasGitHubToken = !!process.env.GITHUB_PERSONAL_ACCESS_TOKEN
 
-export default isLocal
+console.log('TinaCMS Database Mode:', isLocal ? 'LOCAL' : 'SELF-HOSTED')
+console.log('MongoDB URI:', hasMongoDb ? 'Set' : 'Missing')
+console.log('GitHub Token:', hasGitHubToken ? 'Set' : 'Missing')
+
+// Use local database if in local mode OR if MongoDB is not configured
+const useLocalDb = isLocal || !hasMongoDb || !hasGitHubToken
+
+export default useLocalDb
   ? createLocalDatabase()
   : createDatabase({
       gitProvider: new GitHubProvider({
