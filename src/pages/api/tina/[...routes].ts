@@ -1,6 +1,6 @@
 import { TinaNodeBackend, LocalBackendAuthProvider } from '@tinacms/datalayer'
-import { AuthJsBackendAuthProvider, TinaAuthJSOptions } from 'tinacms-authjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { TinaAuthJSOptions, AuthJsBackendAuthProvider } from 'tinacms-authjs'
 
 import databaseClient from '../../../../tina/__generated__/databaseClient'
 

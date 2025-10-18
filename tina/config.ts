@@ -1,4 +1,4 @@
-import { defineConfig } from 'tinacms'
+import { defineConfig, LocalAuthProvider,  } from 'tinacms'
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -9,6 +9,14 @@ export default defineConfig({
 
   // Self-hosted backend configuration
   contentApiUrlOverride: '/api/tina/gql',
+
+  clientId: null,
+  token: undefined,
+
+  /*   authProvider: LocalBackendAuthProvider(), */
+
+  authProvider: new LocalAuthProvider(),
+  //authProvider: new UsernamePasswordAuthJSProvider(),
 
   build: {
     outputFolder: 'admin',
