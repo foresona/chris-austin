@@ -267,6 +267,7 @@ type Page implements Node & Document {
   pageTitle: String
   subtitle: String
   description: String
+  titleBrandText: String
   heroTitle: String
   heroSubtitle: String
   heroDescription: String
@@ -377,6 +378,7 @@ input PageFilter {
   pageTitle: StringFilter
   subtitle: StringFilter
   description: StringFilter
+  titleBrandText: StringFilter
   heroTitle: StringFilter
   heroSubtitle: StringFilter
   heroDescription: StringFilter
@@ -545,6 +547,7 @@ input PageMutation {
   pageTitle: String
   subtitle: String
   description: String
+  titleBrandText: String
   heroTitle: String
   heroSubtitle: String
   heroDescription: String

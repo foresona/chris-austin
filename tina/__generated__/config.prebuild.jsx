@@ -178,6 +178,12 @@ var config_default = defineConfig({
               component: "textarea"
             }
           },
+          {
+            type: "string",
+            name: "titleBrandText",
+            label: "Title Brand Text",
+            description: 'Optional brand name/text to display after page title (e.g., "Chris Austin PR" in "About Chris Austin PR")'
+          },
           // Homepage specific fields
           {
             type: "string",

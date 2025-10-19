@@ -28,7 +28,7 @@ export default function AboutPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
               {pageContent.pageTitle || 'About'}{' '}
               <span style={{ color: '#db4a2b' }}>
-                {homeContent.brandName || 'Chris Austin PR'}
+                {pageContent.titleBrandText || homeContent.brandName || 'Chris Austin PR'}
               </span>
             </h1>
             <p className="text-lg leading-8 text-gray-600 max-w-3xl mx-auto">

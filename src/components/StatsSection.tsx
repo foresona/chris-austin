@@ -209,10 +209,7 @@ export default function StatsSection({ stats: propStats, bottomText }: StatsProp
             transition={{ delay: 0.6 }}
             className="mt-16 text-center"
           >
-            <p
-              className="text-lg text-gray-600"
-              dangerouslySetInnerHTML={{ __html: bottomText }}
-            />
+            <p className="text-lg text-gray-600" dangerouslySetInnerHTML={{ __html: bottomText }} />
           </motion.div>
         )}
       </div>

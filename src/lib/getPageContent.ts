@@ -9,6 +9,7 @@ export interface PageContent {
   pageTitle?: string
   subtitle?: string
   description?: string
+  titleBrandText?: string
   heroTitle?: string
   heroSubtitle?: string
   heroDescription?: string

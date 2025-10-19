@@ -16,12 +16,7 @@ interface HeroProps {
   }>
 }
 
-export default function Hero({
-  heroTitle,
-  heroSubtitle,
-  heroDescription,
-  stats,
-}: HeroProps = {}) {
+export default function Hero({ heroTitle, heroSubtitle, heroDescription, stats }: HeroProps = {}) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,

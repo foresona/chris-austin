@@ -29,6 +29,7 @@ fragment PageParts on Page {
   pageTitle
   subtitle
   description
+  titleBrandText
   heroTitle
   heroSubtitle
   heroDescription

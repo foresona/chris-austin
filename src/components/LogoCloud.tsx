@@ -180,9 +180,7 @@ export default function LogoCloud({
           transition={{ delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <p className="text-gray-600 mb-6">
-            {ctaText || 'Ready to join these industry leaders?'}
-          </p>
+          <p className="text-gray-600 mb-6">{ctaText || 'Ready to join these industry leaders?'}</p>
           <motion.a
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all"
