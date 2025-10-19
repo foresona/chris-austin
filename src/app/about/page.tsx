@@ -102,9 +102,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Meet Our Team
               </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                The experts behind your success stories
-              </p>
+              <p className="mt-4 text-lg text-gray-600">The experts behind your success stories</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
