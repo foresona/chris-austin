@@ -1,7 +1,7 @@
 ---
 clientName: Emily Rodriguez
 clientPosition: Founder Soft
-company: Art
+company: Art Collections
 clientImage: ''
 companyLogo: ''
 rating: 5
