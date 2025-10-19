@@ -2,8 +2,22 @@
 
 import { motion } from 'framer-motion'
 
-// Sample client logos - these would be replaced with actual client logos
-const clients = [
+interface Client {
+  name: string
+  industry: string
+}
+
+interface LogoCloudProps {
+  sectionTag?: string
+  sectionTitle?: string
+  sectionDescription?: string
+  clients?: Client[]
+  ctaText?: string
+  buttonText?: string
+}
+
+// Default client logos
+const defaultClients = [
   { name: 'TechStart', industry: 'Technology' },
   { name: 'GreenLife', industry: 'Sustainability' },
   { name: 'Artisan Collective', industry: 'Creative' },
@@ -16,10 +30,18 @@ const clients = [
   { name: 'FashionForward', industry: 'Fashion' },
 ]
 
-// Duplicate for infinite scroll effect
-const allClients = [...clients, ...clients]
-
-export default function LogoCloud() {
+export default function LogoCloud({
+  sectionTag,
+  sectionTitle,
+  sectionDescription,
+  clients: propClients,
+  ctaText,
+  buttonText,
+}: LogoCloudProps = {}) {
+  // Use provided clients or fallback to defaults
+  const clients = propClients && propClients.length > 0 ? propClients : defaultClients
+  // Duplicate for infinite scroll effect
+  const allClients = [...clients, ...clients]
   return (
     <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
       {/* Background decoration */}
@@ -43,16 +65,21 @@ export default function LogoCloud() {
             viewport={{ once: true }}
             className="inline-block mb-4 text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
           >
-            Trusted Partners
+            {sectionTag || 'Trusted Partners'}
           </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-            Brands That{' '}
-            <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-              Trust Us
-            </span>
+            {sectionTitle || (
+              <>
+                Brands That{' '}
+                <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
+                  Trust Us
+                </span>
+              </>
+            )}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We&apos;ve partnered with industry leaders across sectors to tell their stories
+            {sectionDescription ||
+              "We've partnered with industry leaders across sectors to tell their stories"}
           </p>
         </motion.div>
 
@@ -153,14 +180,16 @@ export default function LogoCloud() {
           transition={{ delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <p className="text-gray-600 mb-6">Ready to join these industry leaders?</p>
+          <p className="text-gray-600 mb-6">
+            {ctaText || 'Ready to join these industry leaders?'}
+          </p>
           <motion.a
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Let&apos;s Work Together
+            {buttonText || "Let's Work Together"}
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

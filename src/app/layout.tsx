@@ -26,13 +26,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // Get contact data for footer
+  // Get contact data for footer and brand name for header
   const contactData = getPageContent('contact')
+  const homeData = getPageContent('home')
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
+        <Header brandName={homeData.brandName || contactData.footerBrandName} />
         <main className="pt-20">{children}</main>
         <Footer contactData={contactData} />
       </body>

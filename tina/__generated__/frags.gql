@@ -72,6 +72,21 @@ fragment PageParts on Page {
     icon
     gradient
   }
+  brandName
+  logoCloudSectionTag
+  logoCloudSectionTitle
+  logoCloudSectionDescription
+  logoCloudClients {
+    __typename
+    name
+    industry
+  }
+  logoCloudCtaText
+  logoCloudButtonText
+  testimonialsSectionTag
+  testimonialsSectionTitle
+  testimonialsSectionDescription
+  statsBottomText
   aboutTitle
   aboutDescription
   story

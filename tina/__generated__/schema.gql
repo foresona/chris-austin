@@ -238,6 +238,11 @@ type PageFeatures {
   gradient: String
 }
 
+type PageLogoCloudClients {
+  name: String!
+  industry: String!
+}
+
 type PageValues {
   title: String!
   description: String!
@@ -281,6 +286,17 @@ type Page implements Node & Document {
   featuresSectionTitle: String
   featuresSectionDescription: String
   features: [PageFeatures]
+  brandName: String
+  logoCloudSectionTag: String
+  logoCloudSectionTitle: String
+  logoCloudSectionDescription: String
+  logoCloudClients: [PageLogoCloudClients]
+  logoCloudCtaText: String
+  logoCloudButtonText: String
+  testimonialsSectionTag: String
+  testimonialsSectionTitle: String
+  testimonialsSectionDescription: String
+  statsBottomText: String
   aboutTitle: String
   aboutDescription: String
   story: String
@@ -330,6 +346,11 @@ input PageFeaturesFilter {
   gradient: StringFilter
 }
 
+input PageLogoCloudClientsFilter {
+  name: StringFilter
+  industry: StringFilter
+}
+
 input PageValuesFilter {
   title: StringFilter
   description: StringFilter
@@ -373,6 +394,17 @@ input PageFilter {
   featuresSectionTitle: StringFilter
   featuresSectionDescription: StringFilter
   features: PageFeaturesFilter
+  brandName: StringFilter
+  logoCloudSectionTag: StringFilter
+  logoCloudSectionTitle: StringFilter
+  logoCloudSectionDescription: StringFilter
+  logoCloudClients: PageLogoCloudClientsFilter
+  logoCloudCtaText: StringFilter
+  logoCloudButtonText: StringFilter
+  testimonialsSectionTag: StringFilter
+  testimonialsSectionTitle: StringFilter
+  testimonialsSectionDescription: StringFilter
+  statsBottomText: StringFilter
   aboutTitle: StringFilter
   aboutDescription: StringFilter
   story: StringFilter
@@ -480,6 +512,11 @@ input PageFeaturesMutation {
   gradient: String
 }
 
+input PageLogoCloudClientsMutation {
+  name: String
+  industry: String
+}
+
 input PageValuesMutation {
   title: String
   description: String
@@ -523,6 +560,17 @@ input PageMutation {
   featuresSectionTitle: String
   featuresSectionDescription: String
   features: [PageFeaturesMutation]
+  brandName: String
+  logoCloudSectionTag: String
+  logoCloudSectionTitle: String
+  logoCloudSectionDescription: String
+  logoCloudClients: [PageLogoCloudClientsMutation]
+  logoCloudCtaText: String
+  logoCloudButtonText: String
+  testimonialsSectionTag: String
+  testimonialsSectionTitle: String
+  testimonialsSectionDescription: String
+  statsBottomText: String
   aboutTitle: String
   aboutDescription: String
   story: String

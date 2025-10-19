@@ -25,6 +25,7 @@ export default function Home() {
         heroTitle={pageContent.heroTitle}
         heroSubtitle={pageContent.heroSubtitle}
         heroDescription={pageContent.heroDescription}
+        stats={pageContent.stats}
       />
       <ServicesSection
         services={pageContent.services}
@@ -44,9 +45,21 @@ export default function Home() {
         sectionTitle={pageContent.featuresSectionTitle}
         sectionDescription={pageContent.featuresSectionDescription}
       />
-      <StatsSection stats={pageContent.stats} />
-      <LogoCloud />
-      <Testimonials testimonials={featuredTestimonials} />
+      <StatsSection stats={pageContent.stats} bottomText={pageContent.statsBottomText} />
+      <LogoCloud
+        sectionTag={pageContent.logoCloudSectionTag}
+        sectionTitle={pageContent.logoCloudSectionTitle}
+        sectionDescription={pageContent.logoCloudSectionDescription}
+        clients={pageContent.logoCloudClients}
+        ctaText={pageContent.logoCloudCtaText}
+        buttonText={pageContent.logoCloudButtonText}
+      />
+      <Testimonials
+        testimonials={featuredTestimonials}
+        sectionTag={pageContent.testimonialsSectionTag}
+        sectionTitle={pageContent.testimonialsSectionTitle}
+        sectionDescription={pageContent.testimonialsSectionDescription}
+      />
 
       {/* CTA Section with stunning design */}
       <section className="relative py-32 overflow-hidden bg-black">

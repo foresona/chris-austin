@@ -48,6 +48,20 @@ export interface PageContent {
     icon?: string
     gradient?: string
   }>
+  brandName?: string
+  logoCloudSectionTag?: string
+  logoCloudSectionTitle?: string
+  logoCloudSectionDescription?: string
+  logoCloudClients?: Array<{
+    name: string
+    industry: string
+  }>
+  logoCloudCtaText?: string
+  logoCloudButtonText?: string
+  testimonialsSectionTag?: string
+  testimonialsSectionTitle?: string
+  testimonialsSectionDescription?: string
+  statsBottomText?: string
   aboutTitle?: string
   aboutDescription?: string
   story?: string

@@ -9,9 +9,19 @@ interface HeroProps {
   heroTitle?: string
   heroSubtitle?: string
   heroDescription?: string
+  stats?: Array<{
+    label: string
+    value: string
+    description?: string
+  }>
 }
 
-export default function Hero({ heroTitle, heroSubtitle, heroDescription }: HeroProps = {}) {
+export default function Hero({
+  heroTitle,
+  heroSubtitle,
+  heroDescription,
+  stats,
+}: HeroProps = {}) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -175,35 +185,33 @@ export default function Hero({ heroTitle, heroSubtitle, heroDescription }: HeroP
           </motion.div>
 
           {/* Stats with Glass-morphism */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
-          >
-            {[
-              { value: '500+', label: 'Successful Campaigns', delay: 0.6 },
-              { value: '200+', label: 'Happy Clients', delay: 0.7 },
-              { value: '15+', label: 'Years of Excellence', delay: 0.8 },
-            ].map((stat) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: stat.delay }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#db4a2b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <p className="relative text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  {stat.value}
-                </p>
-                <p className="relative mt-3 text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+          {stats && stats.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+            >
+              {stats.slice(0, 3).map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#db4a2b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <p className="relative text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    {stat.value}
+                  </p>
+                  <p className="relative mt-3 text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </div>
       </motion.div>
 

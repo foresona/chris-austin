@@ -12,6 +12,7 @@ interface Stat {
 
 interface StatsProps {
   stats?: Stat[]
+  bottomText?: string
 }
 
 const iconMap = [Award, Users, Newspaper, Globe]
@@ -42,7 +43,7 @@ function Counter({ value }: { value: number }) {
   return <span ref={ref} />
 }
 
-export default function StatsSection({ stats: propStats }: StatsProps = {}) {
+export default function StatsSection({ stats: propStats, bottomText }: StatsProps = {}) {
   // Use provided stats or fallback to defaults
   const stats = propStats || [
     { label: 'Successful Campaigns', value: '500', description: 'Industry-leading results' },
@@ -200,21 +201,20 @@ export default function StatsSection({ stats: propStats }: StatsProps = {}) {
         </div>
 
         {/* Bottom highlight text */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-lg text-gray-600">
-            Join the{' '}
-            <span className="font-bold bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-              200+ brands
-            </span>{' '}
-            that trust us with their story
-          </p>
-        </motion.div>
+        {bottomText && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-16 text-center"
+          >
+            <p
+              className="text-lg text-gray-600"
+              dangerouslySetInnerHTML={{ __html: bottomText }}
+            />
+          </motion.div>
+        )}
       </div>
     </section>
   )

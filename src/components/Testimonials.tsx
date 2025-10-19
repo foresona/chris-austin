@@ -16,9 +16,17 @@ interface Testimonial {
 
 interface TestimonialsProps {
   testimonials: Testimonial[]
+  sectionTag?: string
+  sectionTitle?: string
+  sectionDescription?: string
 }
 
-export default function Testimonials({ testimonials }: TestimonialsProps) {
+export default function Testimonials({
+  testimonials,
+  sectionTag,
+  sectionTitle,
+  sectionDescription,
+}: TestimonialsProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -63,16 +71,21 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
             viewport={{ once: true }}
             className="inline-block mb-4 text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
           >
-            Testimonials
+            {sectionTag || 'Testimonials'}
           </motion.span>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
-            What Our Clients{' '}
-            <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-              Say
-            </span>
+            {sectionTitle || (
+              <>
+                What Our Clients{' '}
+                <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
+                  Say
+                </span>
+              </>
+            )}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don&apos;t just take our word for it—hear from the brands we&apos;ve helped grow
+            {sectionDescription ||
+              "Don't just take our word for it—hear from the brands we've helped grow"}
           </p>
         </motion.div>
 

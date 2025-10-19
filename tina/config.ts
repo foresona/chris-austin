@@ -443,6 +443,97 @@ export default defineConfig({
               },
             ],
           },
+          // Brand Name (used in Header and Footer)
+          {
+            type: 'string',
+            name: 'brandName',
+            label: 'Brand Name',
+            description: 'Company name displayed in header and footer',
+          },
+          // Logo Cloud Section
+          {
+            type: 'string',
+            name: 'logoCloudSectionTag',
+            label: 'Logo Cloud Section Tag',
+            description: 'Small tag above logo cloud title (e.g., "Trusted Partners")',
+          },
+          {
+            type: 'string',
+            name: 'logoCloudSectionTitle',
+            label: 'Logo Cloud Section Title',
+          },
+          {
+            type: 'string',
+            name: 'logoCloudSectionDescription',
+            label: 'Logo Cloud Section Description',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'object',
+            name: 'logoCloudClients',
+            label: 'Client Logos',
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.name || 'Client' }
+              },
+            },
+            fields: [
+              {
+                type: 'string',
+                name: 'name',
+                label: 'Client Name',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'industry',
+                label: 'Industry',
+                required: true,
+              },
+            ],
+          },
+          {
+            type: 'string',
+            name: 'logoCloudCtaText',
+            label: 'Logo Cloud CTA Text',
+            description: 'Text above the CTA button',
+          },
+          {
+            type: 'string',
+            name: 'logoCloudButtonText',
+            label: 'Logo Cloud Button Text',
+            description: 'Button text for logo cloud CTA',
+          },
+          // Testimonials Section Headers
+          {
+            type: 'string',
+            name: 'testimonialsSectionTag',
+            label: 'Testimonials Section Tag',
+            description: 'Small tag above testimonials title',
+          },
+          {
+            type: 'string',
+            name: 'testimonialsSectionTitle',
+            label: 'Testimonials Section Title',
+          },
+          {
+            type: 'string',
+            name: 'testimonialsSectionDescription',
+            label: 'Testimonials Section Description',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          // Stats Section Bottom Text
+          {
+            type: 'string',
+            name: 'statsBottomText',
+            label: 'Stats Section Bottom Text',
+            description: 'Text displayed at the bottom of stats section',
+          },
           // About page fields
           {
             type: 'string',

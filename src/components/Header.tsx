@@ -12,7 +12,11 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ]
 
-export default function Header() {
+interface HeaderProps {
+  brandName?: string
+}
+
+export default function Header({ brandName }: HeaderProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { scrollY } = useScroll()
   const backgroundColor = useTransform(
@@ -53,7 +57,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                Chris Austin PR
+                {brandName || 'Chris Austin PR'}
               </motion.span>
             </Link>
           </div>
@@ -115,7 +119,7 @@ export default function Header() {
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                   <span className="text-2xl font-bold bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-                    Chris Austin PR
+                    {brandName || 'Chris Austin PR'}
                   </span>
                 </Link>
                 <button
