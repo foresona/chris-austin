@@ -5,7 +5,13 @@ import Link from 'next/link'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { useRef } from 'react'
 
-export default function Hero() {
+interface HeroProps {
+  heroTitle?: string
+  heroSubtitle?: string
+  heroDescription?: string
+}
+
+export default function Hero({ heroTitle, heroSubtitle, heroDescription }: HeroProps = {}) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -121,14 +127,14 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-              <span className="block text-white mb-2">Your Story,</span>
+              <span className="block text-white mb-2">{heroTitle || 'Your Story,'}</span>
               <span
                 className="block bg-gradient-to-r from-[#db4a2b] via-[#ff6b4a] to-[#db4a2b] bg-clip-text text-transparent animate-gradient"
                 style={{
                   backgroundSize: '200% auto',
                 }}
               >
-                Amplified
+                {heroSubtitle || 'Amplified'}
               </span>
             </h1>
           </motion.div>
@@ -139,8 +145,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-8 text-xl leading-relaxed text-gray-300 max-w-3xl mx-auto"
           >
-            Transform your brand through strategic storytelling and innovative communication that
-            delivers <span className="text-white font-semibold">measurable results</span>
+            {heroDescription ||
+              'Transform your brand through strategic storytelling and innovative communication that delivers measurable results'}
           </motion.p>
 
           <motion.div

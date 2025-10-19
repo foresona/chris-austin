@@ -21,7 +21,11 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      <Hero />
+      <Hero
+        heroTitle={pageContent.heroTitle}
+        heroSubtitle={pageContent.heroSubtitle}
+        heroDescription={pageContent.heroDescription}
+      />
       <ServicesSection />
       <ProcessSection />
       <FeaturesShowcase />
