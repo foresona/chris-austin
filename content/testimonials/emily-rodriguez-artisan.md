@@ -1,6 +1,6 @@
 ---
 clientName: Emily Rodriguez
-clientPosition: Founder
+clientPosition: Founder Soft
 company: Art
 clientImage: ''
 companyLogo: ''
