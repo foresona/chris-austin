@@ -4,36 +4,17 @@ import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import { Award, Users, Newspaper, Globe } from 'lucide-react'
 
-const stats = [
-  {
-    icon: Award,
-    value: 500,
-    suffix: '+',
-    label: 'Successful Campaigns',
-    description: 'Industry-leading results',
-  },
-  {
-    icon: Users,
-    value: 200,
-    suffix: '+',
-    label: 'Happy Clients',
-    description: 'Trusted partnerships',
-  },
-  {
-    icon: Newspaper,
-    value: 10000,
-    suffix: '+',
-    label: 'Media Placements',
-    description: 'Global coverage',
-  },
-  {
-    icon: Globe,
-    value: 50,
-    suffix: '+',
-    label: 'Countries Reached',
-    description: 'Worldwide impact',
-  },
-]
+interface Stat {
+  label: string
+  value: string
+  description?: string
+}
+
+interface StatsProps {
+  stats?: Stat[]
+}
+
+const iconMap = [Award, Users, Newspaper, Globe]
 
 function Counter({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -61,7 +42,15 @@ function Counter({ value }: { value: number }) {
   return <span ref={ref} />
 }
 
-export default function StatsSection() {
+export default function StatsSection({ stats: propStats }: StatsProps = {}) {
+  // Use provided stats or fallback to defaults
+  const stats = propStats || [
+    { label: 'Successful Campaigns', value: '500', description: 'Industry-leading results' },
+    { label: 'Happy Clients', value: '200', description: 'Trusted partnerships' },
+    { label: 'Media Placements', value: '10000', description: 'Global coverage' },
+    { label: 'Countries Reached', value: '50', description: 'Worldwide impact' },
+  ]
+
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
       {/* Background Pattern */}
@@ -132,7 +121,9 @@ export default function StatsSection() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => {
-            const Icon = stat.icon
+            const Icon = iconMap[index % iconMap.length]
+            const numValue = parseInt(stat.value.replace(/[^0-9]/g, '')) || 0
+            const suffix = stat.value.match(/\D+$/)?.[0] || '+'
 
             return (
               <motion.div
@@ -170,8 +161,8 @@ export default function StatsSection() {
                   {/* Counter */}
                   <div className="relative mb-4">
                     <motion.h3 className="text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:from-[#db4a2b] group-hover:to-[#ff6b4a] transition-all">
-                      <Counter value={stat.value} />
-                      <span>{stat.suffix}</span>
+                      <Counter value={numValue} />
+                      <span>{suffix}</span>
                     </motion.h3>
                   </div>
 

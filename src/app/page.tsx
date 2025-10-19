@@ -29,7 +29,7 @@ export default function Home() {
       <ServicesSection />
       <ProcessSection />
       <FeaturesShowcase />
-      <StatsSection />
+      <StatsSection stats={pageContent.stats} />
       <LogoCloud />
       <Testimonials testimonials={featuredTestimonials} />
 
