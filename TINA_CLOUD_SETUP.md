@@ -37,6 +37,7 @@ vercel env add TINA_TOKEN production
 ```
 
 Or add them manually in Vercel Dashboard:
+
 1. Go to https://vercel.com/foresonas-projects/chrisaustin/settings/environment-variables
 2. Add `NEXT_PUBLIC_TINA_CLIENT_ID` with your Client ID
 3. Add `TINA_TOKEN` with your Token
@@ -62,10 +63,12 @@ vercel --prod
 ## 📝 What Changed
 
 ### Files Updated:
+
 - ✅ `tina/config.ts` - Now uses TinaCMS Cloud
 - ✅ Configuration simplified (no MongoDB needed)
 
 ### What You Can Do:
+
 - ✅ Edit content via `/admin` with GitHub authentication
 - ✅ Changes automatically commit to your repository
 - ✅ Vercel auto-deploys when you save changes in TinaCMS
@@ -75,6 +78,7 @@ vercel --prod
 ## 🎨 Editing Your Website
 
 ### To Edit the Home Page:
+
 1. Go to `/admin`
 2. Click "Pages" in the sidebar
 3. Select "home.mdx"
@@ -88,6 +92,7 @@ vercel --prod
 6. Wait ~1 minute for Vercel to deploy
 
 ### To Edit Blog Posts:
+
 1. Go to `/admin`
 2. Click "Blog Posts"
 3. Select a post or create new
@@ -95,6 +100,7 @@ vercel --prod
 5. Save (auto-commits and deploys)
 
 ### To Edit Testimonials:
+
 1. Go to `/admin`
 2. Click "Testimonials"
 3. Edit existing or add new
@@ -105,6 +111,7 @@ vercel --prod
 For local development with TinaCMS Cloud:
 
 1. Create `.env.local`:
+
 ```bash
 NEXT_PUBLIC_TINA_CLIENT_ID=your_client_id_here
 TINA_TOKEN=your_token_here
@@ -112,6 +119,7 @@ TINA_PUBLIC_IS_LOCAL=false
 ```
 
 2. Run dev server:
+
 ```bash
 npm run dev
 ```
@@ -121,14 +129,17 @@ npm run dev
 ## 🆘 Troubleshooting
 
 ### "Unauthorized" Error
+
 - Ensure you've added both environment variables to Vercel
 - Redeploy after adding variables
 
 ### Can't See Content
+
 - Check that your Client ID and Token are correct
 - Verify you authorized TinaCMS to access your repository
 
 ### Changes Not Deploying
+
 - Check GitHub commits (TinaCMS creates commits when you save)
 - Check Vercel deployment logs
 - Ensure Vercel is connected to your GitHub repo

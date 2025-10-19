@@ -1,6 +1,6 @@
 ---
 clientName: Michael Chen
-clientPosition: Marketing Director
+clientPosition: Marketing
 company: GreenLife
 clientImage: ''
 companyLogo: ''
