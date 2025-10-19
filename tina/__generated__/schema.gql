@@ -216,6 +216,28 @@ type PageStats {
   description: String
 }
 
+type PageServices {
+  title: String!
+  description: String!
+  icon: String
+  color: String
+}
+
+type PageProcessSteps {
+  number: String!
+  title: String!
+  description: String!
+  icon: String
+  color: String
+}
+
+type PageFeatures {
+  title: String!
+  description: String!
+  icon: String
+  gradient: String
+}
+
 type PageValues {
   title: String!
   description: String!
@@ -247,6 +269,9 @@ type Page implements Node & Document {
   ctaDescription: String
   ctaButtonText: String
   stats: [PageStats]
+  services: [PageServices]
+  processSteps: [PageProcessSteps]
+  features: [PageFeatures]
   aboutTitle: String
   aboutDescription: String
   story: String
@@ -270,6 +295,28 @@ input PageStatsFilter {
   label: StringFilter
   value: StringFilter
   description: StringFilter
+}
+
+input PageServicesFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+  color: StringFilter
+}
+
+input PageProcessStepsFilter {
+  number: StringFilter
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+  color: StringFilter
+}
+
+input PageFeaturesFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+  gradient: StringFilter
 }
 
 input PageValuesFilter {
@@ -303,6 +350,9 @@ input PageFilter {
   ctaDescription: StringFilter
   ctaButtonText: StringFilter
   stats: PageStatsFilter
+  services: PageServicesFilter
+  processSteps: PageProcessStepsFilter
+  features: PageFeaturesFilter
   aboutTitle: StringFilter
   aboutDescription: StringFilter
   story: StringFilter
@@ -386,6 +436,28 @@ input PageStatsMutation {
   description: String
 }
 
+input PageServicesMutation {
+  title: String
+  description: String
+  icon: String
+  color: String
+}
+
+input PageProcessStepsMutation {
+  number: String
+  title: String
+  description: String
+  icon: String
+  color: String
+}
+
+input PageFeaturesMutation {
+  title: String
+  description: String
+  icon: String
+  gradient: String
+}
+
 input PageValuesMutation {
   title: String
   description: String
@@ -417,6 +489,9 @@ input PageMutation {
   ctaDescription: String
   ctaButtonText: String
   stats: [PageStatsMutation]
+  services: [PageServicesMutation]
+  processSteps: [PageProcessStepsMutation]
+  features: [PageFeaturesMutation]
   aboutTitle: String
   aboutDescription: String
   story: String

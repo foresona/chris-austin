@@ -2,57 +2,73 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Sparkles, Zap, Target, TrendingUp, MessageCircle, BarChart3 } from 'lucide-react'
+import { Sparkles, Zap, Target, TrendingUp, MessageCircle, BarChart3, LucideIcon } from 'lucide-react'
 
-const features = [
+interface Feature {
+  title: string
+  description: string
+  icon?: string
+  gradient?: string
+}
+
+interface FeaturesShowcaseProps {
+  features?: Feature[]
+}
+
+const defaultFeatures = [
   {
-    icon: Sparkles,
+    icon: 'Sparkles',
     title: 'Strategic Storytelling',
     description:
       'Craft compelling narratives that resonate with your audience and capture media attention',
     gradient: 'from-purple-500 to-pink-500',
-    delay: 0,
   },
   {
-    icon: Target,
+    icon: 'Target',
     title: 'Targeted Outreach',
     description:
       'Connect with the right journalists, influencers, and media outlets for maximum impact',
     gradient: 'from-blue-500 to-cyan-500',
-    delay: 0.1,
   },
   {
-    icon: MessageCircle,
+    icon: 'MessageCircle',
     title: 'Crisis Management',
     description:
       'Navigate challenging situations with confidence and protect your brand reputation',
     gradient: 'from-orange-500 to-red-500',
-    delay: 0.2,
   },
   {
-    icon: TrendingUp,
+    icon: 'TrendingUp',
     title: 'Growth Analytics',
     description: 'Track your PR performance with detailed metrics and actionable insights',
     gradient: 'from-green-500 to-emerald-500',
-    delay: 0.3,
   },
   {
-    icon: Zap,
+    icon: 'Zap',
     title: 'Rapid Response',
     description: 'Stay ahead of trends and capitalize on opportunities with our agile approach',
     gradient: 'from-yellow-500 to-orange-500',
-    delay: 0.4,
   },
   {
-    icon: BarChart3,
+    icon: 'BarChart3',
     title: 'ROI Optimization',
     description: 'Maximize your PR investment with data-driven strategies and measurable results',
     gradient: 'from-indigo-500 to-purple-500',
-    delay: 0.5,
   },
 ]
 
-export default function FeaturesShowcase() {
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Sparkles,
+  Zap,
+  Target,
+  TrendingUp,
+  MessageCircle,
+  BarChart3,
+}
+
+export default function FeaturesShowcase({ features }: FeaturesShowcaseProps) {
+  const featuresData = features && features.length > 0 ? features : defaultFeatures
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -134,8 +150,8 @@ export default function FeaturesShowcase() {
 
         {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature) => {
-            const Icon = feature.icon
+          {featuresData.map((feature, index) => {
+            const Icon = feature.icon ? iconMap[feature.icon] || Sparkles : Sparkles
 
             return (
               <motion.div
@@ -143,7 +159,7 @@ export default function FeaturesShowcase() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: feature.delay }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="group relative"
               >

@@ -1,33 +1,44 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Newspaper, Users, Target, TrendingUp, ArrowUpRight } from 'lucide-react'
+import { Newspaper, Users, Target, TrendingUp, ArrowUpRight, LucideIcon } from 'lucide-react'
 import { useRef } from 'react'
 
-const services = [
+interface Service {
+  title: string
+  description: string
+  icon?: string
+  color?: string
+}
+
+interface ServicesSectionProps {
+  services?: Service[]
+}
+
+const defaultServices = [
   {
-    icon: Newspaper,
+    icon: 'Newspaper',
     title: 'Media Relations',
     description:
       'Build meaningful relationships with journalists and secure high-impact media placements that matter.',
     color: 'from-orange-500 to-red-500',
   },
   {
-    icon: Users,
+    icon: 'Users',
     title: 'Brand Storytelling',
     description:
       'Craft compelling narratives that connect with your audience and elevate your brand presence.',
     color: 'from-purple-500 to-pink-500',
   },
   {
-    icon: Target,
+    icon: 'Target',
     title: 'Crisis Management',
     description:
       'Navigate challenges with strategic communication that protects and strengthens your reputation.',
     color: 'from-blue-500 to-cyan-500',
   },
   {
-    icon: TrendingUp,
+    icon: 'TrendingUp',
     title: 'Strategic Campaigns',
     description:
       'Data-driven campaigns designed to achieve measurable results and exceptional ROI.',
@@ -35,7 +46,16 @@ const services = [
   },
 ]
 
-export default function ServicesSection() {
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Newspaper,
+  Users,
+  Target,
+  TrendingUp,
+}
+
+export default function ServicesSection({ services }: ServicesSectionProps) {
+  const servicesData = services && services.length > 0 ? services : defaultServices
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -92,8 +112,8 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon
+          {servicesData.map((service, index) => {
+            const Icon = service.icon ? iconMap[service.icon] || Newspaper : Newspaper
             return (
               <motion.div
                 key={service.title}

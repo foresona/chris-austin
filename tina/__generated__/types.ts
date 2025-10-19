@@ -331,6 +331,31 @@ export type PageStats = {
   description?: Maybe<Scalars['String']['output']>;
 };
 
+export type PageServices = {
+  __typename?: 'PageServices';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  icon?: Maybe<Scalars['String']['output']>;
+  color?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageProcessSteps = {
+  __typename?: 'PageProcessSteps';
+  number: Scalars['String']['output'];
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  icon?: Maybe<Scalars['String']['output']>;
+  color?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageFeatures = {
+  __typename?: 'PageFeatures';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  icon?: Maybe<Scalars['String']['output']>;
+  gradient?: Maybe<Scalars['String']['output']>;
+};
+
 export type PageValues = {
   __typename?: 'PageValues';
   title: Scalars['String']['output'];
@@ -366,6 +391,9 @@ export type Page = Node & Document & {
   ctaDescription?: Maybe<Scalars['String']['output']>;
   ctaButtonText?: Maybe<Scalars['String']['output']>;
   stats?: Maybe<Array<Maybe<PageStats>>>;
+  services?: Maybe<Array<Maybe<PageServices>>>;
+  processSteps?: Maybe<Array<Maybe<PageProcessSteps>>>;
+  features?: Maybe<Array<Maybe<PageFeatures>>>;
   aboutTitle?: Maybe<Scalars['String']['output']>;
   aboutDescription?: Maybe<Scalars['String']['output']>;
   story?: Maybe<Scalars['String']['output']>;
@@ -389,6 +417,28 @@ export type PageStatsFilter = {
   label?: InputMaybe<StringFilter>;
   value?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
+};
+
+export type PageServicesFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  color?: InputMaybe<StringFilter>;
+};
+
+export type PageProcessStepsFilter = {
+  number?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  color?: InputMaybe<StringFilter>;
+};
+
+export type PageFeaturesFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  gradient?: InputMaybe<StringFilter>;
 };
 
 export type PageValuesFilter = {
@@ -422,6 +472,9 @@ export type PageFilter = {
   ctaDescription?: InputMaybe<StringFilter>;
   ctaButtonText?: InputMaybe<StringFilter>;
   stats?: InputMaybe<PageStatsFilter>;
+  services?: InputMaybe<PageServicesFilter>;
+  processSteps?: InputMaybe<PageProcessStepsFilter>;
+  features?: InputMaybe<PageFeaturesFilter>;
   aboutTitle?: InputMaybe<StringFilter>;
   aboutDescription?: InputMaybe<StringFilter>;
   story?: InputMaybe<StringFilter>;
@@ -577,6 +630,28 @@ export type PageStatsMutation = {
   description?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PageServicesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageProcessStepsMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageFeaturesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  gradient?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type PageValuesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
@@ -608,6 +683,9 @@ export type PageMutation = {
   ctaDescription?: InputMaybe<Scalars['String']['input']>;
   ctaButtonText?: InputMaybe<Scalars['String']['input']>;
   stats?: InputMaybe<Array<InputMaybe<PageStatsMutation>>>;
+  services?: InputMaybe<Array<InputMaybe<PageServicesMutation>>>;
+  processSteps?: InputMaybe<Array<InputMaybe<PageProcessStepsMutation>>>;
+  features?: InputMaybe<Array<InputMaybe<PageFeaturesMutation>>>;
   aboutTitle?: InputMaybe<Scalars['String']['input']>;
   aboutDescription?: InputMaybe<Scalars['String']['input']>;
   story?: InputMaybe<Scalars['String']['input']>;
@@ -628,7 +706,7 @@ export type PostPartsFragment = { __typename: 'Post', title: string, excerpt: st
 
 export type TestimonialPartsFragment = { __typename: 'Testimonial', clientName: string, clientPosition: string, company: string, clientImage?: string | null, companyLogo?: string | null, testimonial: any, rating: number, featured?: boolean | null, date: string };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
+export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
 
 export type PostQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -673,7 +751,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -685,7 +763,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
 
 export const PostPartsFragmentDoc = gql`
     fragment PostParts on Post {
@@ -732,6 +810,28 @@ export const PagePartsFragmentDoc = gql`
     label
     value
     description
+  }
+  services {
+    __typename
+    title
+    description
+    icon
+    color
+  }
+  processSteps {
+    __typename
+    number
+    title
+    description
+    icon
+    color
+  }
+  features {
+    __typename
+    title
+    description
+    icon
+    gradient
   }
   aboutTitle
   aboutDescription

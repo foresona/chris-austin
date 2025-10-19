@@ -250,6 +250,136 @@ export default defineConfig({
               },
             ],
           },
+          // Services Section
+          {
+            type: 'object',
+            name: 'services',
+            label: 'Services',
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.title || 'Service' }
+              },
+            },
+            fields: [
+              {
+                type: 'string',
+                name: 'title',
+                label: 'Service Title',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'description',
+                label: 'Description',
+                required: true,
+                ui: {
+                  component: 'textarea',
+                },
+              },
+              {
+                type: 'string',
+                name: 'icon',
+                label: 'Icon Name',
+                description: 'Lucide icon name (e.g., Newspaper, Users, Target, TrendingUp)',
+              },
+              {
+                type: 'string',
+                name: 'color',
+                label: 'Gradient Color',
+                description: 'Tailwind gradient classes (e.g., from-orange-500 to-red-500)',
+              },
+            ],
+          },
+          // Process Steps
+          {
+            type: 'object',
+            name: 'processSteps',
+            label: 'Process Steps',
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.title || 'Step' }
+              },
+            },
+            fields: [
+              {
+                type: 'string',
+                name: 'number',
+                label: 'Step Number',
+                description: 'e.g., 01, 02, 03',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'title',
+                label: 'Step Title',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'description',
+                label: 'Description',
+                required: true,
+                ui: {
+                  component: 'textarea',
+                },
+              },
+              {
+                type: 'string',
+                name: 'icon',
+                label: 'Icon Name',
+                description: 'Lucide icon name (e.g., Lightbulb, Target, Rocket, TrendingUp)',
+              },
+              {
+                type: 'string',
+                name: 'color',
+                label: 'Gradient Color',
+                description: 'Tailwind gradient classes (e.g., from-purple-500 to-pink-500)',
+              },
+            ],
+          },
+          // Features
+          {
+            type: 'object',
+            name: 'features',
+            label: 'Features',
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.title || 'Feature' }
+              },
+            },
+            fields: [
+              {
+                type: 'string',
+                name: 'title',
+                label: 'Feature Title',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'description',
+                label: 'Description',
+                required: true,
+                ui: {
+                  component: 'textarea',
+                },
+              },
+              {
+                type: 'string',
+                name: 'icon',
+                label: 'Icon Name',
+                description: 'Lucide icon name (e.g., Sparkles, Target, Zap)',
+              },
+              {
+                type: 'string',
+                name: 'gradient',
+                label: 'Gradient Color',
+                description: 'Tailwind gradient classes (e.g., from-purple-500 to-pink-500)',
+              },
+            ],
+          },
           // About page fields
           {
             type: 'string',

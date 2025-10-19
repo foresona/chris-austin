@@ -41,6 +41,28 @@ fragment PageParts on Page {
     value
     description
   }
+  services {
+    __typename
+    title
+    description
+    icon
+    color
+  }
+  processSteps {
+    __typename
+    number
+    title
+    description
+    icon
+    color
+  }
+  features {
+    __typename
+    title
+    description
+    icon
+    gradient
+  }
   aboutTitle
   aboutDescription
   story

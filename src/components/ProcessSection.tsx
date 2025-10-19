@@ -2,12 +2,24 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Lightbulb, Target, Rocket, TrendingUp, ArrowRight } from 'lucide-react'
+import { Lightbulb, Target, Rocket, TrendingUp, ArrowRight, LucideIcon } from 'lucide-react'
 
-const steps = [
+interface ProcessStep {
+  number: string
+  title: string
+  description: string
+  icon?: string
+  color?: string
+}
+
+interface ProcessSectionProps {
+  processSteps?: ProcessStep[]
+}
+
+const defaultSteps = [
   {
     number: '01',
-    icon: Lightbulb,
+    icon: 'Lightbulb',
     title: 'Discovery & Strategy',
     description:
       'We dive deep into your brand, audience, and goals to craft a tailored PR strategy that resonates.',
@@ -15,7 +27,7 @@ const steps = [
   },
   {
     number: '02',
-    icon: Target,
+    icon: 'Target',
     title: 'Content Creation',
     description:
       'Our team develops compelling narratives and press materials that capture attention and drive engagement.',
@@ -23,7 +35,7 @@ const steps = [
   },
   {
     number: '03',
-    icon: Rocket,
+    icon: 'Rocket',
     title: 'Campaign Launch',
     description:
       'Strategic execution across media channels, leveraging our network to amplify your message.',
@@ -31,14 +43,23 @@ const steps = [
   },
   {
     number: '04',
-    icon: TrendingUp,
+    icon: 'TrendingUp',
     title: 'Monitor & Optimize',
     description: 'Continuous tracking, analysis, and refinement to ensure maximum impact and ROI.',
     color: 'from-green-500 to-emerald-500',
   },
 ]
 
-export default function ProcessSection() {
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Lightbulb,
+  Target,
+  Rocket,
+  TrendingUp,
+}
+
+export default function ProcessSection({ processSteps }: ProcessSectionProps) {
+  const steps = processSteps && processSteps.length > 0 ? processSteps : defaultSteps
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -100,7 +121,7 @@ export default function ProcessSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => {
-              const Icon = step.icon
+              const Icon = step.icon ? iconMap[step.icon] || Lightbulb : Lightbulb
               const isHovered = hoveredIndex === index
 
               return (

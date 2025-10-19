@@ -20,6 +20,25 @@ export interface PageContent {
     value: string
     description?: string
   }>
+  services?: Array<{
+    title: string
+    description: string
+    icon?: string
+    color?: string
+  }>
+  processSteps?: Array<{
+    number: string
+    title: string
+    description: string
+    icon?: string
+    color?: string
+  }>
+  features?: Array<{
+    title: string
+    description: string
+    icon?: string
+    gradient?: string
+  }>
   aboutTitle?: string
   aboutDescription?: string
   story?: string

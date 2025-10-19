@@ -26,9 +26,9 @@ export default function Home() {
         heroSubtitle={pageContent.heroSubtitle}
         heroDescription={pageContent.heroDescription}
       />
-      <ServicesSection />
-      <ProcessSection />
-      <FeaturesShowcase />
+      <ServicesSection services={pageContent.services} />
+      <ProcessSection processSteps={pageContent.processSteps} />
+      <FeaturesShowcase features={pageContent.features} />
       <StatsSection stats={pageContent.stats} />
       <LogoCloud />
       <Testimonials testimonials={featuredTestimonials} />
