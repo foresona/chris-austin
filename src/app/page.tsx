@@ -53,7 +53,7 @@ export default function Home() {
             </h2>
             <p className="text-xl text-gray-400 mb-12">
               {pageContent.ctaDescription ||
-                "Let's create a PR strategy that delivers real results for your brand"}
+                "Let's create a PR strategy that delivers real results for your brand!"}
             </p>
             <Link
               href="/contact"

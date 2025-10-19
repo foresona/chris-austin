@@ -2,7 +2,7 @@ node_modules/
 .vercel
 
 # TinaCMS generated files (built fresh on each deploy)
-tina/__generated__/.cache
+tina/__generated__
 .tina
 
 # Next.js
