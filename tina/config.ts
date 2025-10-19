@@ -352,6 +352,21 @@ export default defineConfig({
           // Contact page fields
           {
             type: 'string',
+            name: 'contactSectionTitle',
+            label: 'Contact Section Title',
+            description: 'Main heading for contact information section',
+          },
+          {
+            type: 'string',
+            name: 'contactSectionDescription',
+            label: 'Contact Section Description',
+            description: 'Description text below the contact section title',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
             name: 'email',
             label: 'Contact Email',
           },

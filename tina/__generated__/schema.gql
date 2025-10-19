@@ -253,6 +253,8 @@ type Page implements Node & Document {
   mission: String
   values: [PageValues]
   team: [PageTeam]
+  contactSectionTitle: String
+  contactSectionDescription: String
   email: String
   phone: String
   address: String
@@ -307,6 +309,8 @@ input PageFilter {
   mission: StringFilter
   values: PageValuesFilter
   team: PageTeamFilter
+  contactSectionTitle: StringFilter
+  contactSectionDescription: StringFilter
   email: StringFilter
   phone: StringFilter
   address: StringFilter
@@ -419,6 +423,8 @@ input PageMutation {
   mission: String
   values: [PageValuesMutation]
   team: [PageTeamMutation]
+  contactSectionTitle: String
+  contactSectionDescription: String
   email: String
   phone: String
   address: String

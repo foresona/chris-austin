@@ -1,14 +1,8 @@
 # Chris Austin PR Agency Website# Chris Austin PR Agency Website
 
-
-
 A modern, full-stack PR agency website built with Next.js 15, TypeScript, and TinaCMS for easy content management.A stunning, modern PR agency website built with Next.js 15, featuring dynamic content management and interactive animations inspired by Apple's simplicity and Check.co's beauty.
 
-
-
 ## 🚀 Features## 🚀 Key Features
-
-
 
 - ✅ **Modern Stack**: Next.js 15 with TypeScript- **Tina CMS** - Free, Git-based content management with visual editing at `/admin`
 
@@ -30,7 +24,7 @@ A modern, full-stack PR agency website built with Next.js 15, TypeScript, and Ti
 
 ## 🎨 Design System
 
-- Node.js 18+ 
+- Node.js 18+
 
 - npm or yarn**Brand Colors:** `#db4a2b` (Coral Red) • `#e3e2dd` (Light Beige)
 
@@ -38,17 +32,11 @@ A modern, full-stack PR agency website built with Next.js 15, TypeScript, and Ti
 
 - Vercel account for deployment (optional)**Tech Stack:** Next.js 15 • TypeScript • Tailwind CSS 4 • Framer Motion • Lottie React • Tina CMS
 
-
-
 ## 🛠️ Quick StartThis is a [Next.js](https://nextjs.org) project.
-
-
 
 ### 1. Clone the Repository## Getting Started
 
-
-
-```bashFirst, run the development server:
+````bashFirst, run the development server:
 
 git clone https://github.com/foresona/chris-austin.git
 
@@ -68,7 +56,7 @@ npm install --legacy-peer-deps# or
 
 ```bun dev
 
-```
+````
 
 > Note: We use `--legacy-peer-deps` due to TinaCMS peer dependency requirements with Next.js 15.
 
@@ -182,7 +170,7 @@ chris-austin/
 Add these in your Vercel project settings:
 
 - `NEXT_PUBLIC_TINA_CLIENT_ID` - From TinaCMS Cloud
-- `TINA_TOKEN` - Content token from TinaCMS Cloud  
+- `TINA_TOKEN` - Content token from TinaCMS Cloud
 - `TINA_SEARCH_TOKEN` - Search token from TinaCMS Cloud
 - `TINA_PUBLIC_IS_LOCAL` - Set to `false`
 

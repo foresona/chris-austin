@@ -58,6 +58,8 @@ fragment PageParts on Page {
     bio
     image
   }
+  contactSectionTitle
+  contactSectionDescription
   email
   phone
   address

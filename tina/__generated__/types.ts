@@ -372,6 +372,8 @@ export type Page = Node & Document & {
   mission?: Maybe<Scalars['String']['output']>;
   values?: Maybe<Array<Maybe<PageValues>>>;
   team?: Maybe<Array<Maybe<PageTeam>>>;
+  contactSectionTitle?: Maybe<Scalars['String']['output']>;
+  contactSectionDescription?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
   address?: Maybe<Scalars['String']['output']>;
@@ -426,6 +428,8 @@ export type PageFilter = {
   mission?: InputMaybe<StringFilter>;
   values?: InputMaybe<PageValuesFilter>;
   team?: InputMaybe<PageTeamFilter>;
+  contactSectionTitle?: InputMaybe<StringFilter>;
+  contactSectionDescription?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringFilter>;
   address?: InputMaybe<StringFilter>;
@@ -610,6 +614,8 @@ export type PageMutation = {
   mission?: InputMaybe<Scalars['String']['input']>;
   values?: InputMaybe<Array<InputMaybe<PageValuesMutation>>>;
   team?: InputMaybe<Array<InputMaybe<PageTeamMutation>>>;
+  contactSectionTitle?: InputMaybe<Scalars['String']['input']>;
+  contactSectionDescription?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   phone?: InputMaybe<Scalars['String']['input']>;
   address?: InputMaybe<Scalars['String']['input']>;
@@ -622,7 +628,7 @@ export type PostPartsFragment = { __typename: 'Post', title: string, excerpt: st
 
 export type TestimonialPartsFragment = { __typename: 'Testimonial', clientName: string, clientPosition: string, company: string, clientImage?: string | null, companyLogo?: string | null, testimonial: any, rating: number, featured?: boolean | null, date: string };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
+export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
 
 export type PostQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -667,7 +673,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -679,7 +685,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
 
 export const PostPartsFragmentDoc = gql`
     fragment PostParts on Post {
@@ -744,6 +750,8 @@ export const PagePartsFragmentDoc = gql`
     bio
     image
   }
+  contactSectionTitle
+  contactSectionDescription
   email
   phone
   address
@@ -996,7 +1004,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/1.6/content/da298104-9821-418a-8efc-5a7bd2622a12/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )
