@@ -48,6 +48,8 @@ export interface PageContent {
     icon?: string
     gradient?: string
   }>
+  featuresCtaText?: string
+  featuresButtonText?: string
   brandName?: string
   logoCloudSectionTag?: string
   logoCloudSectionTitle?: string

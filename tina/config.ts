@@ -443,6 +443,19 @@ export default defineConfig({
               },
             ],
           },
+          // Features Section CTA
+          {
+            type: 'string',
+            name: 'featuresCtaText',
+            label: 'Features CTA Text',
+            description: 'Text above the features CTA button',
+          },
+          {
+            type: 'string',
+            name: 'featuresButtonText',
+            label: 'Features Button Text',
+            description: 'Button text for features CTA',
+          },
           // Brand Name (used in Header and Footer)
           {
             type: 'string',

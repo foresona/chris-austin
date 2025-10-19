@@ -286,6 +286,8 @@ type Page implements Node & Document {
   featuresSectionTitle: String
   featuresSectionDescription: String
   features: [PageFeatures]
+  featuresCtaText: String
+  featuresButtonText: String
   brandName: String
   logoCloudSectionTag: String
   logoCloudSectionTitle: String
@@ -394,6 +396,8 @@ input PageFilter {
   featuresSectionTitle: StringFilter
   featuresSectionDescription: StringFilter
   features: PageFeaturesFilter
+  featuresCtaText: StringFilter
+  featuresButtonText: StringFilter
   brandName: StringFilter
   logoCloudSectionTag: StringFilter
   logoCloudSectionTitle: StringFilter
@@ -560,6 +564,8 @@ input PageMutation {
   featuresSectionTitle: String
   featuresSectionDescription: String
   features: [PageFeaturesMutation]
+  featuresCtaText: String
+  featuresButtonText: String
   brandName: String
   logoCloudSectionTag: String
   logoCloudSectionTitle: String

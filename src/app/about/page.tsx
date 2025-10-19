@@ -17,6 +17,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function AboutPage() {
   const pageContent = getPageContent('about')
+  const homeContent = getPageContent('home')
 
   return (
     <div>
@@ -26,7 +27,9 @@ export default function AboutPage() {
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
               {pageContent.pageTitle || 'About'}{' '}
-              <span style={{ color: '#db4a2b' }}>Chris Austin PR</span>
+              <span style={{ color: '#db4a2b' }}>
+                {homeContent.brandName || 'Chris Austin PR'}
+              </span>
             </h1>
             <p className="text-lg leading-8 text-gray-600 max-w-3xl mx-auto">
               {pageContent.subtitle ||

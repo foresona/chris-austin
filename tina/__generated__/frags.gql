@@ -72,6 +72,8 @@ fragment PageParts on Page {
     icon
     gradient
   }
+  featuresCtaText
+  featuresButtonText
   brandName
   logoCloudSectionTag
   logoCloudSectionTitle

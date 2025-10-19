@@ -24,6 +24,8 @@ interface FeaturesShowcaseProps {
   sectionTag?: string
   sectionTitle?: string
   sectionDescription?: string
+  ctaText?: string
+  buttonText?: string
 }
 
 const defaultFeatures = [
@@ -79,12 +81,14 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 export default function FeaturesShowcase({
-  features,
+  features: propFeatures,
   sectionTag,
   sectionTitle,
   sectionDescription,
-}: FeaturesShowcaseProps) {
-  const featuresData = features && features.length > 0 ? features : defaultFeatures
+  ctaText,
+  buttonText,
+}: FeaturesShowcaseProps = {}) {
+  const featuresData = propFeatures && propFeatures.length > 0 ? propFeatures : defaultFeatures
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -255,13 +259,15 @@ export default function FeaturesShowcase({
           transition={{ delay: 0.6 }}
           className="mt-20 text-center"
         >
-          <p className="text-gray-600 mb-6 text-lg">Ready to experience the difference?</p>
+          <p className="text-gray-600 mb-6 text-lg">
+            {ctaText || 'Ready to experience the difference?'}
+          </p>
           <motion.button
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span>Explore All Features</span>
+            <span>{buttonText || 'Explore All Features'}</span>
             <motion.span
               animate={{ rotate: [0, 90, 0] }}
               transition={{ duration: 2, repeat: Infinity }}

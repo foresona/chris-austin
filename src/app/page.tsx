@@ -44,6 +44,8 @@ export default function Home() {
         sectionTag={pageContent.featuresSectionTag}
         sectionTitle={pageContent.featuresSectionTitle}
         sectionDescription={pageContent.featuresSectionDescription}
+        ctaText={pageContent.featuresCtaText}
+        buttonText={pageContent.featuresButtonText}
       />
       <StatsSection stats={pageContent.stats} bottomText={pageContent.statsBottomText} />
       <LogoCloud
