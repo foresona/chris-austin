@@ -35,6 +35,8 @@ export interface PageContent {
     bio?: string
     image?: string
   }>
+  contactSectionTitle?: string
+  contactSectionDescription?: string
   email?: string
   phone?: string
   address?: string
