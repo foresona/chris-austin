@@ -26,9 +26,24 @@ export default function Home() {
         heroSubtitle={pageContent.heroSubtitle}
         heroDescription={pageContent.heroDescription}
       />
-      <ServicesSection services={pageContent.services} />
-      <ProcessSection processSteps={pageContent.processSteps} />
-      <FeaturesShowcase features={pageContent.features} />
+      <ServicesSection
+        services={pageContent.services}
+        sectionTag={pageContent.servicesSectionTag}
+        sectionTitle={pageContent.servicesSectionTitle}
+        sectionDescription={pageContent.servicesSectionDescription}
+      />
+      <ProcessSection
+        processSteps={pageContent.processSteps}
+        sectionTag={pageContent.processSectionTag}
+        sectionTitle={pageContent.processSectionTitle}
+        sectionDescription={pageContent.processSectionDescription}
+      />
+      <FeaturesShowcase
+        features={pageContent.features}
+        sectionTag={pageContent.featuresSectionTag}
+        sectionTitle={pageContent.featuresSectionTitle}
+        sectionDescription={pageContent.featuresSectionDescription}
+      />
       <StatsSection stats={pageContent.stats} />
       <LogoCloud />
       <Testimonials testimonials={featuredTestimonials} />

@@ -250,6 +250,27 @@ export default defineConfig({
               },
             ],
           },
+          // Services Section Headers
+          {
+            type: 'string',
+            name: 'servicesSectionTag',
+            label: 'Services Section Tag',
+            description: 'Small tag above services title (e.g., "What We Do")',
+          },
+          {
+            type: 'string',
+            name: 'servicesSectionTitle',
+            label: 'Services Section Title',
+            description: 'Main services section heading',
+          },
+          {
+            type: 'string',
+            name: 'servicesSectionDescription',
+            label: 'Services Section Description',
+            ui: {
+              component: 'textarea',
+            },
+          },
           // Services Section
           {
             type: 'object',
@@ -290,6 +311,27 @@ export default defineConfig({
                 description: 'Tailwind gradient classes (e.g., from-orange-500 to-red-500)',
               },
             ],
+          },
+          // Process Section Headers
+          {
+            type: 'string',
+            name: 'processSectionTag',
+            label: 'Process Section Tag',
+            description: 'Small tag above process title (e.g., "Our Process")',
+          },
+          {
+            type: 'string',
+            name: 'processSectionTitle',
+            label: 'Process Section Title',
+            description: 'Main process section heading',
+          },
+          {
+            type: 'string',
+            name: 'processSectionDescription',
+            label: 'Process Section Description',
+            ui: {
+              component: 'textarea',
+            },
           },
           // Process Steps
           {
@@ -338,6 +380,27 @@ export default defineConfig({
                 description: 'Tailwind gradient classes (e.g., from-purple-500 to-pink-500)',
               },
             ],
+          },
+          // Features Section Headers
+          {
+            type: 'string',
+            name: 'featuresSectionTag',
+            label: 'Features Section Tag',
+            description: 'Small tag above features title (e.g., "Why Choose Us")',
+          },
+          {
+            type: 'string',
+            name: 'featuresSectionTitle',
+            label: 'Features Section Title',
+            description: 'Main features section heading',
+          },
+          {
+            type: 'string',
+            name: 'featuresSectionDescription',
+            label: 'Features Section Description',
+            ui: {
+              component: 'textarea',
+            },
           },
           // Features
           {

@@ -20,12 +20,18 @@ export interface PageContent {
     value: string
     description?: string
   }>
+  servicesSectionTag?: string
+  servicesSectionTitle?: string
+  servicesSectionDescription?: string
   services?: Array<{
     title: string
     description: string
     icon?: string
     color?: string
   }>
+  processSectionTag?: string
+  processSectionTitle?: string
+  processSectionDescription?: string
   processSteps?: Array<{
     number: string
     title: string
@@ -33,6 +39,9 @@ export interface PageContent {
     icon?: string
     color?: string
   }>
+  featuresSectionTag?: string
+  featuresSectionTitle?: string
+  featuresSectionDescription?: string
   features?: Array<{
     title: string
     description: string

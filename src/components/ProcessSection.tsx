@@ -14,6 +14,9 @@ interface ProcessStep {
 
 interface ProcessSectionProps {
   processSteps?: ProcessStep[]
+  sectionTag?: string
+  sectionTitle?: string
+  sectionDescription?: string
 }
 
 const defaultSteps = [
@@ -58,7 +61,12 @@ const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
 }
 
-export default function ProcessSection({ processSteps }: ProcessSectionProps) {
+export default function ProcessSection({
+  processSteps,
+  sectionTag,
+  sectionTitle,
+  sectionDescription,
+}: ProcessSectionProps) {
   const steps = processSteps && processSteps.length > 0 ? processSteps : defaultSteps
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -101,16 +109,21 @@ export default function ProcessSection({ processSteps }: ProcessSectionProps) {
             viewport={{ once: true }}
             className="inline-block mb-4 text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
           >
-            Our Process
+            {sectionTag || 'Our Process'}
           </motion.span>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-            How We{' '}
-            <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-              Make Magic
-            </span>
+            {sectionTitle || (
+              <>
+                How We{' '}
+                <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
+                  Make Magic
+                </span>
+              </>
+            )}
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            A proven four-step process that transforms brands and delivers exceptional results
+            {sectionDescription ||
+              'A proven four-step process that transforms brands and delivers exceptional results'}
           </p>
         </motion.div>
 

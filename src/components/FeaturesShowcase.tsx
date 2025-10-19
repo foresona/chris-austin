@@ -21,6 +21,9 @@ interface Feature {
 
 interface FeaturesShowcaseProps {
   features?: Feature[]
+  sectionTag?: string
+  sectionTitle?: string
+  sectionDescription?: string
 }
 
 const defaultFeatures = [
@@ -75,7 +78,12 @@ const iconMap: Record<string, LucideIcon> = {
   BarChart3,
 }
 
-export default function FeaturesShowcase({ features }: FeaturesShowcaseProps) {
+export default function FeaturesShowcase({
+  features,
+  sectionTag,
+  sectionTitle,
+  sectionDescription,
+}: FeaturesShowcaseProps) {
   const featuresData = features && features.length > 0 ? features : defaultFeatures
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -142,17 +150,21 @@ export default function FeaturesShowcase({ features }: FeaturesShowcaseProps) {
             viewport={{ once: true }}
             className="inline-block mb-4 text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
           >
-            Why Choose Us
+            {sectionTag || 'Why Choose Us'}
           </motion.span>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
-            Features That{' '}
-            <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-              Drive Success
-            </span>
+            {sectionTitle || (
+              <>
+                Features That{' '}
+                <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
+                  Drive Success
+                </span>
+              </>
+            )}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the comprehensive suite of PR services designed to elevate your brand and
-            amplify your message
+            {sectionDescription ||
+              'Discover the comprehensive suite of PR services designed to elevate your brand and amplify your message'}
           </p>
         </motion.div>
 

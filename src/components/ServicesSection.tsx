@@ -13,6 +13,9 @@ interface Service {
 
 interface ServicesSectionProps {
   services?: Service[]
+  sectionTag?: string
+  sectionTitle?: string
+  sectionDescription?: string
 }
 
 const defaultServices = [
@@ -54,7 +57,12 @@ const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
 }
 
-export default function ServicesSection({ services }: ServicesSectionProps) {
+export default function ServicesSection({
+  services,
+  sectionTag,
+  sectionTitle,
+  sectionDescription,
+}: ServicesSectionProps) {
   const servicesData = services && services.length > 0 ? services : defaultServices
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -96,17 +104,21 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
             viewport={{ once: true }}
             className="inline-block mb-4 text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
           >
-            What We Do
+            {sectionTag || 'What We Do'}
           </motion.span>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
-            Comprehensive PR{' '}
-            <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
-              Solutions
-            </span>
+            {sectionTitle || (
+              <>
+                Comprehensive PR{' '}
+                <span className="bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent">
+                  Solutions
+                </span>
+              </>
+            )}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Tailored strategies that transform your brand&apos;s presence and drive real business
-            results
+            {sectionDescription ||
+              "Tailored strategies that transform your brand's presence and drive real business results"}
           </p>
         </motion.div>
 

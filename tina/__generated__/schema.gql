@@ -269,8 +269,17 @@ type Page implements Node & Document {
   ctaDescription: String
   ctaButtonText: String
   stats: [PageStats]
+  servicesSectionTag: String
+  servicesSectionTitle: String
+  servicesSectionDescription: String
   services: [PageServices]
+  processSectionTag: String
+  processSectionTitle: String
+  processSectionDescription: String
   processSteps: [PageProcessSteps]
+  featuresSectionTag: String
+  featuresSectionTitle: String
+  featuresSectionDescription: String
   features: [PageFeatures]
   aboutTitle: String
   aboutDescription: String
@@ -352,8 +361,17 @@ input PageFilter {
   ctaDescription: StringFilter
   ctaButtonText: StringFilter
   stats: PageStatsFilter
+  servicesSectionTag: StringFilter
+  servicesSectionTitle: StringFilter
+  servicesSectionDescription: StringFilter
   services: PageServicesFilter
+  processSectionTag: StringFilter
+  processSectionTitle: StringFilter
+  processSectionDescription: StringFilter
   processSteps: PageProcessStepsFilter
+  featuresSectionTag: StringFilter
+  featuresSectionTitle: StringFilter
+  featuresSectionDescription: StringFilter
   features: PageFeaturesFilter
   aboutTitle: StringFilter
   aboutDescription: StringFilter
@@ -493,8 +511,17 @@ input PageMutation {
   ctaDescription: String
   ctaButtonText: String
   stats: [PageStatsMutation]
+  servicesSectionTag: String
+  servicesSectionTitle: String
+  servicesSectionDescription: String
   services: [PageServicesMutation]
+  processSectionTag: String
+  processSectionTitle: String
+  processSectionDescription: String
   processSteps: [PageProcessStepsMutation]
+  featuresSectionTag: String
+  featuresSectionTitle: String
+  featuresSectionDescription: String
   features: [PageFeaturesMutation]
   aboutTitle: String
   aboutDescription: String

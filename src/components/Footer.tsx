@@ -66,7 +66,10 @@ export default function Footer({ contactData }: FooterProps) {
                   href={
                     contactData.socialMedia.instagram.startsWith('http')
                       ? contactData.socialMedia.instagram
-                      : `https://instagram.com/${contactData.socialMedia.instagram.replace('@', '')}`
+                      : `https://instagram.com/${contactData.socialMedia.instagram.replace(
+                          '@',
+                          '',
+                        )}`
                   }
                   target="_blank"
                   rel="noopener noreferrer"

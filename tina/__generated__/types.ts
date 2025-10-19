@@ -391,8 +391,17 @@ export type Page = Node & Document & {
   ctaDescription?: Maybe<Scalars['String']['output']>;
   ctaButtonText?: Maybe<Scalars['String']['output']>;
   stats?: Maybe<Array<Maybe<PageStats>>>;
+  servicesSectionTag?: Maybe<Scalars['String']['output']>;
+  servicesSectionTitle?: Maybe<Scalars['String']['output']>;
+  servicesSectionDescription?: Maybe<Scalars['String']['output']>;
   services?: Maybe<Array<Maybe<PageServices>>>;
+  processSectionTag?: Maybe<Scalars['String']['output']>;
+  processSectionTitle?: Maybe<Scalars['String']['output']>;
+  processSectionDescription?: Maybe<Scalars['String']['output']>;
   processSteps?: Maybe<Array<Maybe<PageProcessSteps>>>;
+  featuresSectionTag?: Maybe<Scalars['String']['output']>;
+  featuresSectionTitle?: Maybe<Scalars['String']['output']>;
+  featuresSectionDescription?: Maybe<Scalars['String']['output']>;
   features?: Maybe<Array<Maybe<PageFeatures>>>;
   aboutTitle?: Maybe<Scalars['String']['output']>;
   aboutDescription?: Maybe<Scalars['String']['output']>;
@@ -474,8 +483,17 @@ export type PageFilter = {
   ctaDescription?: InputMaybe<StringFilter>;
   ctaButtonText?: InputMaybe<StringFilter>;
   stats?: InputMaybe<PageStatsFilter>;
+  servicesSectionTag?: InputMaybe<StringFilter>;
+  servicesSectionTitle?: InputMaybe<StringFilter>;
+  servicesSectionDescription?: InputMaybe<StringFilter>;
   services?: InputMaybe<PageServicesFilter>;
+  processSectionTag?: InputMaybe<StringFilter>;
+  processSectionTitle?: InputMaybe<StringFilter>;
+  processSectionDescription?: InputMaybe<StringFilter>;
   processSteps?: InputMaybe<PageProcessStepsFilter>;
+  featuresSectionTag?: InputMaybe<StringFilter>;
+  featuresSectionTitle?: InputMaybe<StringFilter>;
+  featuresSectionDescription?: InputMaybe<StringFilter>;
   features?: InputMaybe<PageFeaturesFilter>;
   aboutTitle?: InputMaybe<StringFilter>;
   aboutDescription?: InputMaybe<StringFilter>;
@@ -687,8 +705,17 @@ export type PageMutation = {
   ctaDescription?: InputMaybe<Scalars['String']['input']>;
   ctaButtonText?: InputMaybe<Scalars['String']['input']>;
   stats?: InputMaybe<Array<InputMaybe<PageStatsMutation>>>;
+  servicesSectionTag?: InputMaybe<Scalars['String']['input']>;
+  servicesSectionTitle?: InputMaybe<Scalars['String']['input']>;
+  servicesSectionDescription?: InputMaybe<Scalars['String']['input']>;
   services?: InputMaybe<Array<InputMaybe<PageServicesMutation>>>;
+  processSectionTag?: InputMaybe<Scalars['String']['input']>;
+  processSectionTitle?: InputMaybe<Scalars['String']['input']>;
+  processSectionDescription?: InputMaybe<Scalars['String']['input']>;
   processSteps?: InputMaybe<Array<InputMaybe<PageProcessStepsMutation>>>;
+  featuresSectionTag?: InputMaybe<Scalars['String']['input']>;
+  featuresSectionTitle?: InputMaybe<Scalars['String']['input']>;
+  featuresSectionDescription?: InputMaybe<Scalars['String']['input']>;
   features?: InputMaybe<Array<InputMaybe<PageFeaturesMutation>>>;
   aboutTitle?: InputMaybe<Scalars['String']['input']>;
   aboutDescription?: InputMaybe<Scalars['String']['input']>;
@@ -712,7 +739,7 @@ export type PostPartsFragment = { __typename: 'Post', title: string, excerpt: st
 
 export type TestimonialPartsFragment = { __typename: 'Testimonial', clientName: string, clientPosition: string, company: string, clientImage?: string | null, companyLogo?: string | null, testimonial: any, rating: number, featured?: boolean | null, date: string };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
+export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
 
 export type PostQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -757,7 +784,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -769,7 +796,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
 
 export const PostPartsFragmentDoc = gql`
     fragment PostParts on Post {
@@ -817,6 +844,9 @@ export const PagePartsFragmentDoc = gql`
     value
     description
   }
+  servicesSectionTag
+  servicesSectionTitle
+  servicesSectionDescription
   services {
     __typename
     title
@@ -824,6 +854,9 @@ export const PagePartsFragmentDoc = gql`
     icon
     color
   }
+  processSectionTag
+  processSectionTitle
+  processSectionDescription
   processSteps {
     __typename
     number
@@ -832,6 +865,9 @@ export const PagePartsFragmentDoc = gql`
     icon
     color
   }
+  featuresSectionTag
+  featuresSectionTitle
+  featuresSectionDescription
   features {
     __typename
     title
