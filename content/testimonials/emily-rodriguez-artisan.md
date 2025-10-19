@@ -1,7 +1,7 @@
 ---
 clientName: Emily Rodriguez
 clientPosition: Founder
-company: Art Collective
+company: Art
 clientImage: ''
 companyLogo: ''
 rating: 5
