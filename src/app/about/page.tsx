@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Award, Heart, Zap } from 'lucide-react'
+import { Award, Heart, Zap, LucideIcon } from 'lucide-react'
 import { getPageContent } from '@/lib/getPageContent'
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 // Icon mapping
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
   heart: Heart,
   award: Award,
   zap: Zap,
