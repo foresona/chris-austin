@@ -65,6 +65,8 @@ export interface PageContent {
     linkedin?: string
     instagram?: string
   }
+  footerBrandName?: string
+  footerTagline?: string
   body?: string
 }
 

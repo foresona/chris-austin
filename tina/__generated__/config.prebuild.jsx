@@ -535,6 +535,22 @@ var config_default = defineConfig({
               }
             ]
           },
+          // Footer fields
+          {
+            type: "string",
+            name: "footerBrandName",
+            label: "Footer Brand Name",
+            description: "Company name displayed in footer"
+          },
+          {
+            type: "string",
+            name: "footerTagline",
+            label: "Footer Tagline",
+            description: "Short description in footer",
+            ui: {
+              component: "textarea"
+            }
+          },
           {
             type: "rich-text",
             name: "body",

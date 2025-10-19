@@ -2,7 +2,15 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Sparkles, Zap, Target, TrendingUp, MessageCircle, BarChart3, LucideIcon } from 'lucide-react'
+import {
+  Sparkles,
+  Zap,
+  Target,
+  TrendingUp,
+  MessageCircle,
+  BarChart3,
+  LucideIcon,
+} from 'lucide-react'
 
 interface Feature {
   title: string

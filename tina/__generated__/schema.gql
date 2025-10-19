@@ -285,6 +285,8 @@ type Page implements Node & Document {
   address: String
   officeHours: String
   socialMedia: PageSocialMedia
+  footerBrandName: String
+  footerTagline: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -366,6 +368,8 @@ input PageFilter {
   address: StringFilter
   officeHours: StringFilter
   socialMedia: PageSocialMediaFilter
+  footerBrandName: StringFilter
+  footerTagline: StringFilter
   body: RichTextFilter
 }
 
@@ -505,6 +509,8 @@ input PageMutation {
   address: String
   officeHours: String
   socialMedia: PageSocialMediaMutation
+  footerBrandName: String
+  footerTagline: String
   body: JSON
 }
 

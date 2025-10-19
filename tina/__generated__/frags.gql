@@ -92,5 +92,7 @@ fragment PageParts on Page {
     linkedin
     instagram
   }
+  footerBrandName
+  footerTagline
   body
 }
