@@ -117,7 +117,7 @@ export default function LogoCloud() {
               },
             }}
           >
-            {allClients.reverse().map((client, index) => (
+            {[...allClients].reverse().map((client, index) => (
               <motion.div
                 key={`${client.name}-${index}-rev`}
                 className="group relative flex-shrink-0"
