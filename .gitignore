@@ -1,8 +1,15 @@
 node_modules/
 .vercel
 
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # TinaCMS generated files (built fresh on each deploy)
-tina/__generated__
+tina/__generated__/.cache
 .tina
 
 # Next.js
@@ -10,3 +17,19 @@ tina/__generated__
 out/
 *.tsbuildinfo
 next-env.d.ts
+
+# OS files
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
