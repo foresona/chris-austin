@@ -5,7 +5,7 @@ import { getPageContent } from '@/lib/getPageContent'
 export const metadata: Metadata = {
   title: 'About Us - Chris Austin PR Agency',
   description:
-    "Learn about Chris Austin PR Agency's mission, values, and the team behind successful PR campaigns.",
+    "Learn about Chris Austin PR Agency's mission, values, and the team behind successful PR campaigns...",
 }
 
 // Icon mapping
