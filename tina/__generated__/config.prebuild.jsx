@@ -415,12 +415,6 @@ var config_default = defineConfig({
               },
               {
                 type: "string",
-                name: "slug",
-                label: "Service Slug",
-                description: "URL-friendly slug (e.g., brand-storytelling, crisis-management)"
-              },
-              {
-                type: "string",
                 name: "description",
                 label: "Description",
                 required: true,

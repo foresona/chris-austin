@@ -275,7 +275,6 @@ type PageStats {
 
 type PageServices {
   title: String!
-  slug: String
   description: String!
   icon: String
   color: String
@@ -412,7 +411,6 @@ input PageStatsFilter {
 
 input PageServicesFilter {
   title: StringFilter
-  slug: StringFilter
   description: StringFilter
   icon: StringFilter
   color: StringFilter
@@ -631,7 +629,6 @@ input PageStatsMutation {
 
 input PageServicesMutation {
   title: String
-  slug: String
   description: String
   icon: String
   color: String
