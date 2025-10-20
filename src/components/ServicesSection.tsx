@@ -10,6 +10,7 @@ interface Service {
   description: string
   icon?: string
   color?: string
+  slug?: string
 }
 
 interface ServicesSectionProps {
@@ -26,6 +27,7 @@ const defaultServices = [
     description:
       'Build meaningful relationships with journalists and secure high-impact media placements that matter.',
     color: 'from-orange-500 to-red-500',
+    slug: 'media-relations',
   },
   {
     icon: 'Users',
@@ -33,6 +35,7 @@ const defaultServices = [
     description:
       'Craft compelling narratives that connect with your audience and elevate your brand presence.',
     color: 'from-purple-500 to-pink-500',
+    slug: 'brand-storytelling',
   },
   {
     icon: 'Target',
@@ -40,6 +43,7 @@ const defaultServices = [
     description:
       'Navigate challenges with strategic communication that protects and strengthens your reputation.',
     color: 'from-blue-500 to-cyan-500',
+    slug: 'crisis-management',
   },
   {
     icon: 'TrendingUp',
@@ -47,6 +51,7 @@ const defaultServices = [
     description:
       'Data-driven campaigns designed to achieve measurable results and exceptional ROI.',
     color: 'from-green-500 to-emerald-500',
+    slug: 'strategic-campaigns',
   },
 ]
 
@@ -127,7 +132,8 @@ export default function ServicesSection({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {servicesData.map((service, index) => {
             const Icon = service.icon ? iconMap[service.icon] || Newspaper : Newspaper
-            const slug = service.title
+            // Use provided slug if available, otherwise generate from title
+            const slug = service.slug || service.title
               .toLowerCase()
               .replace(/\s+/g, '-')
               .replace(/[^a-z0-9-]/g, '')

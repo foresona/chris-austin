@@ -69,6 +69,7 @@ fragment PageParts on Page {
   services {
     __typename
     title
+    slug
     description
     icon
     color
