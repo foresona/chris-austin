@@ -8,6 +8,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Features', href: '/features' },
+  { name: 'Process', href: '/process' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -18,13 +21,26 @@ interface HeaderProps {
 
 export default function Header({ brandName }: HeaderProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isHomePage, setIsHomePage] = useState(false)
   const { scrollY } = useScroll()
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.8)'],
-  )
-  const backdropBlur = useTransform(scrollY, [0, 100], [0, 10])
+
+  useEffect(() => {
+    // Detect homepage immediately on mount
+    const checkPage = () => {
+      const path = window.location.pathname
+      setIsHomePage(path === '/')
+    }
+    checkPage()
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -34,12 +50,24 @@ export default function Header({ brandName }: HeaderProps = {}) {
     }
   }, [mobileMenuOpen])
 
+  // Dynamic background based on page type
+  const bgStart = isHomePage ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0.85)'
+  const bgEnd = 'rgba(255, 255, 255, 0.98)'
+  const backgroundColor = useTransform(scrollY, [0, 100], [bgStart, bgEnd])
+
+  // Dynamic blur based on page type
+  const blurStart = isHomePage ? 0 : 10
+  const blurEnd = 12
+  const backdropBlur = useTransform(scrollY, [0, 100], [blurStart, blurEnd])
+
   return (
     <motion.header
       style={{
         backgroundColor,
       }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-gray-100/0 transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'border-b border-gray-200 shadow-md' : 'border-b border-transparent'
+      }`}
     >
       <motion.div
         style={{
@@ -53,7 +81,11 @@ export default function Header({ brandName }: HeaderProps = {}) {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 group">
               <motion.span
-                className="text-2xl font-bold bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
+                className={`text-2xl font-bold transition-all duration-300 ${
+                  isHomePage && !isScrolled
+                    ? 'text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]'
+                    : 'bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent'
+                }`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
@@ -65,7 +97,11 @@ export default function Header({ brandName }: HeaderProps = {}) {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors"
+              className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors ${
+                isHomePage && !isScrolled
+                  ? 'text-white hover:bg-white/10'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -78,7 +114,11 @@ export default function Header({ brandName }: HeaderProps = {}) {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative text-sm font-semibold leading-6 text-gray-900 hover:text-[#db4a2b] transition-colors group"
+                className={`relative text-sm font-semibold leading-6 transition-colors group ${
+                  isHomePage && !isScrolled
+                    ? 'text-white hover:text-gray-200 drop-shadow-lg'
+                    : 'text-gray-900 hover:text-[#db4a2b]'
+                }`}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] group-hover:w-full transition-all duration-300" />

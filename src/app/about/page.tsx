@@ -31,7 +31,7 @@ export default function AboutPage() {
                 {pageContent.titleBrandText || homeContent.brandName || 'Chris Austin PR'}
               </span>
             </h1>
-            <p className="text-lg leading-8 text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl font-medium leading-8 text-gray-900 max-w-3xl mx-auto">
               {pageContent.subtitle ||
                 "For over 15 years, we've been crafting compelling narratives and building meaningful connections between brands and their audiences."}
             </p>
@@ -44,14 +44,14 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-600">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Story</h2>
+              <div className="space-y-4 text-gray-800 text-lg leading-relaxed">
                 <p>{pageContent.story}</p>
               </div>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden bg-gray-200">
               {/* Placeholder for image */}
-              <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+              <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-lg font-medium">
                 <p>Agency Image</p>
               </div>
             </div>
@@ -81,15 +81,15 @@ export default function AboutPage() {
             {pageContent.values?.map((value, index) => {
               const IconComponent = value.icon ? iconMap[value.icon.toLowerCase()] : Heart
               return (
-                <div key={index} className="bg-white rounded-2xl p-8 text-center">
+                <div key={index} className="bg-white rounded-2xl p-8 text-center shadow-md">
                   <div
                     className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6"
                     style={{ backgroundColor: '#db4a2b' }}
                   >
                     {IconComponent && <IconComponent className="h-8 w-8 text-white" />}
                   </div>
-                  <h3 className="text-xl font-bold mb-4">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">{value.title}</h3>
+                  <p className="text-gray-800 leading-relaxed">{value.description}</p>
                 </div>
               )
             })}
@@ -111,7 +111,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {pageContent.team.map((member, index) => (
                 <div key={index} className="text-center">
-                  <div className="mb-6 relative h-64 rounded-2xl overflow-hidden bg-gray-200">
+                  <div className="mb-6 relative h-64 rounded-2xl overflow-hidden bg-gray-200 shadow-lg">
                     {member.image ? (
                       <img
                         src={member.image}
@@ -120,17 +120,17 @@ export default function AboutPage() {
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-6xl font-bold text-gray-300">
+                        <div className="text-6xl font-bold text-gray-400">
                           {member.name?.[0] || '?'}
                         </div>
                       </div>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                  <p className="text-sm font-medium mb-4" style={{ color: '#db4a2b' }}>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">{member.name}</h3>
+                  <p className="text-sm font-semibold mb-4" style={{ color: '#db4a2b' }}>
                     {member.position}
                   </p>
-                  <p className="text-gray-600">{member.bio}</p>
+                  <p className="text-gray-800 leading-relaxed">{member.bio}</p>
                 </div>
               ))}
             </div>

@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
+import Link from 'next/link'
 import { Lightbulb, Target, Rocket, TrendingUp, ArrowRight, LucideIcon } from 'lucide-react'
 
 interface ProcessStep {
@@ -149,11 +150,15 @@ export default function ProcessSection({
                   className="relative group"
                 >
                   {/* Card */}
-                  <motion.div
-                    className="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-8 backdrop-blur-sm"
-                    whileHover={{ y: -10, scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
+                  <Link
+                    href={`/process#step-${step.number}`}
+                    className="block relative h-full"
                   >
+                    <motion.div
+                      className="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-8 backdrop-blur-sm"
+                      whileHover={{ y: -10, scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
                     {/* Gradient overlay */}
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
@@ -209,6 +214,7 @@ export default function ProcessSection({
                       transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
                     />
                   </motion.div>
+                  </Link>
 
                   {/* Connecting Arrow for desktop */}
                   {index < steps.length - 1 && (
@@ -238,14 +244,16 @@ export default function ProcessSection({
           transition={{ delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-[#db4a2b]/50 transition-all duration-300 hover:shadow-[#db4a2b]/80"
-          >
-            <span>Start Your Journey</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+          <Link href="/process">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-[#db4a2b]/50 transition-all duration-300 hover:shadow-[#db4a2b]/80"
+            >
+              <span>Start Your Journey</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

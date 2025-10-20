@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Newspaper, Users, Target, TrendingUp, ArrowUpRight, LucideIcon } from 'lucide-react'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 interface Service {
   title: string
@@ -126,6 +127,11 @@ export default function ServicesSection({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {servicesData.map((service, index) => {
             const Icon = service.icon ? iconMap[service.icon] || Newspaper : Newspaper
+            const slug = service.title
+              .toLowerCase()
+              .replace(/\s+/g, '-')
+              .replace(/[^a-z0-9-]/g, '')
+
             return (
               <motion.div
                 key={service.title}
@@ -136,7 +142,10 @@ export default function ServicesSection({
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="group relative"
               >
-                <div className="relative h-full overflow-hidden rounded-3xl bg-white border border-gray-200 p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:border-[#db4a2b]/20">
+                <Link
+                  href={`/services/${slug}`}
+                  className="relative block h-full overflow-hidden rounded-3xl bg-white border border-gray-200 p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:border-[#db4a2b]/20"
+                >
                   {/* Gradient overlay on hover */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
@@ -178,7 +187,7 @@ export default function ServicesSection({
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
                   />
-                </div>
+                </Link>
               </motion.div>
             )
           })}

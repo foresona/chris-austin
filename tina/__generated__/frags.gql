@@ -23,6 +23,27 @@ fragment TestimonialParts on Testimonial {
   date
 }
 
+fragment ServiceParts on Service {
+  __typename
+  title
+  slug
+  icon
+  color
+  excerpt
+  whatWeDoTitle
+  whatWeDoContent
+  benefitsTitle
+  benefits
+  ctaTitle
+  ctaDescription
+  ctaPrimaryText
+  ctaPrimaryLink
+  ctaSecondaryText
+  ctaSecondaryLink
+  featured
+  body
+}
+
 fragment PageParts on Page {
   __typename
   title
@@ -72,6 +93,9 @@ fragment PageParts on Page {
     description
     icon
     gradient
+    link
+    detailedContent
+    benefits
   }
   featuresCtaText
   featuresButtonText
@@ -121,5 +145,26 @@ fragment PageParts on Page {
   }
   footerBrandName
   footerTagline
+  timelineTitle
+  timelineDescription
+  ctaPrimaryText
+  ctaPrimaryLink
+  ctaSecondaryText
+  ctaSecondaryLink
+  steps {
+    __typename
+    number
+    title
+    description
+    icon
+    color
+    keyActivities
+  }
+  blogCtaTitle
+  blogCtaDescription
+  blogCtaPrimaryText
+  blogCtaPrimaryLink
+  blogCtaSecondaryText
+  blogCtaSecondaryLink
   body
 }

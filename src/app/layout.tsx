@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   title: 'Chris Austin PR Agency - Strategic Public Relations & Brand Storytelling',
   description:
     'Leading PR agency specializing in brand storytelling, media relations, and strategic communications that drive results.',
+  colorScheme: 'light',
+  other: {
+    'color-scheme': 'light only',
+  },
 }
 
 export default function RootLayout({
@@ -31,8 +35,10 @@ export default function RootLayout({
   const homeData = getPageContent('home')
 
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className="light" style={{ colorScheme: 'light' }}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}
+      >
         <Header brandName={homeData.brandName || contactData.footerBrandName} />
         <main className="pt-20">{children}</main>
         <Footer contactData={contactData} />

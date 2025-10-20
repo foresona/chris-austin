@@ -48,6 +48,9 @@ export interface PageContent {
     description: string
     icon?: string
     gradient?: string
+    link?: string
+    detailedContent?: string
+    benefits?: string[]
   }>
   featuresCtaText?: string
   featuresButtonText?: string
@@ -93,6 +96,31 @@ export interface PageContent {
   }
   footerBrandName?: string
   footerTagline?: string
+  // Process page specific fields
+  sectionTag?: string
+  sectionTitle?: string
+  sectionDescription?: string
+  timelineTitle?: string
+  timelineDescription?: string
+  ctaPrimaryText?: string
+  ctaPrimaryLink?: string
+  ctaSecondaryText?: string
+  ctaSecondaryLink?: string
+  steps?: Array<{
+    number: string
+    title: string
+    description: string
+    icon?: string
+    color?: string
+    keyActivities?: string[]
+  }>
+  // Blog post CTA fields
+  blogCtaTitle?: string
+  blogCtaDescription?: string
+  blogCtaPrimaryText?: string
+  blogCtaPrimaryLink?: string
+  blogCtaSecondaryText?: string
+  blogCtaSecondaryLink?: string
   body?: string
 }
 

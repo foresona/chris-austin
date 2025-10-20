@@ -86,6 +86,8 @@ export type Query = {
   postConnection: PostConnection;
   testimonial: Testimonial;
   testimonialConnection: TestimonialConnection;
+  service: Service;
+  serviceConnection: ServiceConnection;
   page: Page;
   pageConnection: PageConnection;
 };
@@ -142,6 +144,21 @@ export type QueryTestimonialConnectionArgs = {
 };
 
 
+export type QueryServiceArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryServiceConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<ServiceFilter>;
+};
+
+
 export type QueryPageArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -159,6 +176,7 @@ export type QueryPageConnectionArgs = {
 export type DocumentFilter = {
   post?: InputMaybe<PostFilter>;
   testimonial?: InputMaybe<TestimonialFilter>;
+  service?: InputMaybe<ServiceFilter>;
   page?: InputMaybe<PageFilter>;
 };
 
@@ -199,7 +217,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Post | Testimonial | Page | Folder;
+export type DocumentNode = Post | Testimonial | Service | Page | Folder;
 
 export type Post = Node & Document & {
   __typename?: 'Post';
@@ -324,6 +342,63 @@ export type TestimonialConnection = Connection & {
   edges?: Maybe<Array<Maybe<TestimonialConnectionEdges>>>;
 };
 
+export type Service = Node & Document & {
+  __typename?: 'Service';
+  title: Scalars['String']['output'];
+  slug: Scalars['String']['output'];
+  icon?: Maybe<Scalars['String']['output']>;
+  color?: Maybe<Scalars['String']['output']>;
+  excerpt: Scalars['String']['output'];
+  whatWeDoTitle?: Maybe<Scalars['String']['output']>;
+  whatWeDoContent?: Maybe<Scalars['String']['output']>;
+  benefitsTitle?: Maybe<Scalars['String']['output']>;
+  benefits?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ctaTitle?: Maybe<Scalars['String']['output']>;
+  ctaDescription?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryText?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryText?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  featured?: Maybe<Scalars['Boolean']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type ServiceFilter = {
+  title?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  color?: InputMaybe<StringFilter>;
+  excerpt?: InputMaybe<StringFilter>;
+  whatWeDoTitle?: InputMaybe<StringFilter>;
+  whatWeDoContent?: InputMaybe<StringFilter>;
+  benefitsTitle?: InputMaybe<StringFilter>;
+  benefits?: InputMaybe<StringFilter>;
+  ctaTitle?: InputMaybe<StringFilter>;
+  ctaDescription?: InputMaybe<StringFilter>;
+  ctaPrimaryText?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondaryText?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  featured?: InputMaybe<BooleanFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type ServiceConnectionEdges = {
+  __typename?: 'ServiceConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Service>;
+};
+
+export type ServiceConnection = Connection & {
+  __typename?: 'ServiceConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<ServiceConnectionEdges>>>;
+};
+
 export type PageStats = {
   __typename?: 'PageStats';
   label: Scalars['String']['output'];
@@ -354,6 +429,9 @@ export type PageFeatures = {
   description: Scalars['String']['output'];
   icon?: Maybe<Scalars['String']['output']>;
   gradient?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  detailedContent?: Maybe<Scalars['String']['output']>;
+  benefits?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
 export type PageLogoCloudClients = {
@@ -382,6 +460,16 @@ export type PageSocialMedia = {
   twitter?: Maybe<Scalars['String']['output']>;
   linkedin?: Maybe<Scalars['String']['output']>;
   instagram?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageSteps = {
+  __typename?: 'PageSteps';
+  number: Scalars['String']['output'];
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  icon?: Maybe<Scalars['String']['output']>;
+  color?: Maybe<Scalars['String']['output']>;
+  keyActivities?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
 export type Page = Node & Document & {
@@ -438,6 +526,19 @@ export type Page = Node & Document & {
   socialMedia?: Maybe<PageSocialMedia>;
   footerBrandName?: Maybe<Scalars['String']['output']>;
   footerTagline?: Maybe<Scalars['String']['output']>;
+  timelineTitle?: Maybe<Scalars['String']['output']>;
+  timelineDescription?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryText?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryText?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  steps?: Maybe<Array<Maybe<PageSteps>>>;
+  blogCtaTitle?: Maybe<Scalars['String']['output']>;
+  blogCtaDescription?: Maybe<Scalars['String']['output']>;
+  blogCtaPrimaryText?: Maybe<Scalars['String']['output']>;
+  blogCtaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  blogCtaSecondaryText?: Maybe<Scalars['String']['output']>;
+  blogCtaSecondaryLink?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -470,6 +571,9 @@ export type PageFeaturesFilter = {
   description?: InputMaybe<StringFilter>;
   icon?: InputMaybe<StringFilter>;
   gradient?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  detailedContent?: InputMaybe<StringFilter>;
+  benefits?: InputMaybe<StringFilter>;
 };
 
 export type PageLogoCloudClientsFilter = {
@@ -494,6 +598,15 @@ export type PageSocialMediaFilter = {
   twitter?: InputMaybe<StringFilter>;
   linkedin?: InputMaybe<StringFilter>;
   instagram?: InputMaybe<StringFilter>;
+};
+
+export type PageStepsFilter = {
+  number?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  color?: InputMaybe<StringFilter>;
+  keyActivities?: InputMaybe<StringFilter>;
 };
 
 export type PageFilter = {
@@ -549,6 +662,19 @@ export type PageFilter = {
   socialMedia?: InputMaybe<PageSocialMediaFilter>;
   footerBrandName?: InputMaybe<StringFilter>;
   footerTagline?: InputMaybe<StringFilter>;
+  timelineTitle?: InputMaybe<StringFilter>;
+  timelineDescription?: InputMaybe<StringFilter>;
+  ctaPrimaryText?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondaryText?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  steps?: InputMaybe<PageStepsFilter>;
+  blogCtaTitle?: InputMaybe<StringFilter>;
+  blogCtaDescription?: InputMaybe<StringFilter>;
+  blogCtaPrimaryText?: InputMaybe<StringFilter>;
+  blogCtaPrimaryLink?: InputMaybe<StringFilter>;
+  blogCtaSecondaryText?: InputMaybe<StringFilter>;
+  blogCtaSecondaryLink?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
@@ -576,6 +702,8 @@ export type Mutation = {
   createPost: Post;
   updateTestimonial: Testimonial;
   createTestimonial: Testimonial;
+  updateService: Service;
+  createService: Service;
   updatePage: Page;
   createPage: Page;
 };
@@ -638,6 +766,18 @@ export type MutationCreateTestimonialArgs = {
 };
 
 
+export type MutationUpdateServiceArgs = {
+  relativePath: Scalars['String']['input'];
+  params: ServiceMutation;
+};
+
+
+export type MutationCreateServiceArgs = {
+  relativePath: Scalars['String']['input'];
+  params: ServiceMutation;
+};
+
+
 export type MutationUpdatePageArgs = {
   relativePath: Scalars['String']['input'];
   params: PageMutation;
@@ -652,6 +792,7 @@ export type MutationCreatePageArgs = {
 export type DocumentUpdateMutation = {
   post?: InputMaybe<PostMutation>;
   testimonial?: InputMaybe<TestimonialMutation>;
+  service?: InputMaybe<ServiceMutation>;
   page?: InputMaybe<PageMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -659,6 +800,7 @@ export type DocumentUpdateMutation = {
 export type DocumentMutation = {
   post?: InputMaybe<PostMutation>;
   testimonial?: InputMaybe<TestimonialMutation>;
+  service?: InputMaybe<ServiceMutation>;
   page?: InputMaybe<PageMutation>;
 };
 
@@ -683,6 +825,26 @@ export type TestimonialMutation = {
   rating?: InputMaybe<Scalars['Float']['input']>;
   featured?: InputMaybe<Scalars['Boolean']['input']>;
   date?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ServiceMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+  excerpt?: InputMaybe<Scalars['String']['input']>;
+  whatWeDoTitle?: InputMaybe<Scalars['String']['input']>;
+  whatWeDoContent?: InputMaybe<Scalars['String']['input']>;
+  benefitsTitle?: InputMaybe<Scalars['String']['input']>;
+  benefits?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  ctaTitle?: InputMaybe<Scalars['String']['input']>;
+  ctaDescription?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryText?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryText?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  featured?: InputMaybe<Scalars['Boolean']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
 export type PageStatsMutation = {
@@ -711,6 +873,9 @@ export type PageFeaturesMutation = {
   description?: InputMaybe<Scalars['String']['input']>;
   icon?: InputMaybe<Scalars['String']['input']>;
   gradient?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  detailedContent?: InputMaybe<Scalars['String']['input']>;
+  benefits?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type PageLogoCloudClientsMutation = {
@@ -735,6 +900,15 @@ export type PageSocialMediaMutation = {
   twitter?: InputMaybe<Scalars['String']['input']>;
   linkedin?: InputMaybe<Scalars['String']['input']>;
   instagram?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageStepsMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+  keyActivities?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type PageMutation = {
@@ -790,6 +964,19 @@ export type PageMutation = {
   socialMedia?: InputMaybe<PageSocialMediaMutation>;
   footerBrandName?: InputMaybe<Scalars['String']['input']>;
   footerTagline?: InputMaybe<Scalars['String']['input']>;
+  timelineTitle?: InputMaybe<Scalars['String']['input']>;
+  timelineDescription?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryText?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryText?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  steps?: InputMaybe<Array<InputMaybe<PageStepsMutation>>>;
+  blogCtaTitle?: InputMaybe<Scalars['String']['input']>;
+  blogCtaDescription?: InputMaybe<Scalars['String']['input']>;
+  blogCtaPrimaryText?: InputMaybe<Scalars['String']['input']>;
+  blogCtaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  blogCtaSecondaryText?: InputMaybe<Scalars['String']['input']>;
+  blogCtaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
@@ -797,7 +984,9 @@ export type PostPartsFragment = { __typename: 'Post', title: string, excerpt: st
 
 export type TestimonialPartsFragment = { __typename: 'Testimonial', clientName: string, clientPosition: string, company: string, clientImage?: string | null, companyLogo?: string | null, testimonial: any, rating: number, featured?: boolean | null, date: string };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, titleBrandText?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, featuresCtaText?: string | null, featuresButtonText?: string | null, brandName?: string | null, logoCloudSectionTag?: string | null, logoCloudSectionTitle?: string | null, logoCloudSectionDescription?: string | null, logoCloudCtaText?: string | null, logoCloudButtonText?: string | null, testimonialsSectionTag?: string | null, testimonialsSectionTitle?: string | null, testimonialsSectionDescription?: string | null, statsBottomText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, logoCloudClients?: Array<{ __typename: 'PageLogoCloudClients', name: string, industry: string } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null };
+export type ServicePartsFragment = { __typename: 'Service', title: string, slug: string, icon?: string | null, color?: string | null, excerpt: string, whatWeDoTitle?: string | null, whatWeDoContent?: string | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, featured?: boolean | null, body?: any | null };
+
+export type PagePartsFragment = { __typename: 'Page', title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, titleBrandText?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, featuresCtaText?: string | null, featuresButtonText?: string | null, brandName?: string | null, logoCloudSectionTag?: string | null, logoCloudSectionTitle?: string | null, logoCloudSectionDescription?: string | null, logoCloudCtaText?: string | null, logoCloudButtonText?: string | null, testimonialsSectionTag?: string | null, testimonialsSectionTitle?: string | null, testimonialsSectionDescription?: string | null, statsBottomText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, timelineTitle?: string | null, timelineDescription?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, blogCtaTitle?: string | null, blogCtaDescription?: string | null, blogCtaPrimaryText?: string | null, blogCtaPrimaryLink?: string | null, blogCtaSecondaryText?: string | null, blogCtaSecondaryLink?: string | null, body?: any | null, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null, link?: string | null, detailedContent?: string | null, benefits?: Array<string | null> | null } | null> | null, logoCloudClients?: Array<{ __typename: 'PageLogoCloudClients', name: string, industry: string } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null, steps?: Array<{ __typename: 'PageSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null, keyActivities?: Array<string | null> | null } | null> | null };
 
 export type PostQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -837,12 +1026,31 @@ export type TestimonialConnectionQueryVariables = Exact<{
 
 export type TestimonialConnectionQuery = { __typename?: 'Query', testimonialConnection: { __typename?: 'TestimonialConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TestimonialConnectionEdges', cursor: string, node?: { __typename: 'Testimonial', id: string, clientName: string, clientPosition: string, company: string, clientImage?: string | null, companyLogo?: string | null, testimonial: any, rating: number, featured?: boolean | null, date: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export type ServiceQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type ServiceQuery = { __typename?: 'Query', service: { __typename: 'Service', id: string, title: string, slug: string, icon?: string | null, color?: string | null, excerpt: string, whatWeDoTitle?: string | null, whatWeDoContent?: string | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, featured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type ServiceConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<ServiceFilter>;
+}>;
+
+
+export type ServiceConnectionQuery = { __typename?: 'Query', serviceConnection: { __typename?: 'ServiceConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ServiceConnectionEdges', cursor: string, node?: { __typename: 'Service', id: string, title: string, slug: string, icon?: string | null, color?: string | null, excerpt: string, whatWeDoTitle?: string | null, whatWeDoContent?: string | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, featured?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
 export type PageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, titleBrandText?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, featuresCtaText?: string | null, featuresButtonText?: string | null, brandName?: string | null, logoCloudSectionTag?: string | null, logoCloudSectionTitle?: string | null, logoCloudSectionDescription?: string | null, logoCloudCtaText?: string | null, logoCloudButtonText?: string | null, testimonialsSectionTag?: string | null, testimonialsSectionTitle?: string | null, testimonialsSectionDescription?: string | null, statsBottomText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, logoCloudClients?: Array<{ __typename: 'PageLogoCloudClients', name: string, industry: string } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, titleBrandText?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, featuresCtaText?: string | null, featuresButtonText?: string | null, brandName?: string | null, logoCloudSectionTag?: string | null, logoCloudSectionTitle?: string | null, logoCloudSectionDescription?: string | null, logoCloudCtaText?: string | null, logoCloudButtonText?: string | null, testimonialsSectionTag?: string | null, testimonialsSectionTitle?: string | null, testimonialsSectionDescription?: string | null, statsBottomText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, timelineTitle?: string | null, timelineDescription?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, blogCtaTitle?: string | null, blogCtaDescription?: string | null, blogCtaPrimaryText?: string | null, blogCtaPrimaryLink?: string | null, blogCtaSecondaryText?: string | null, blogCtaSecondaryLink?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null, link?: string | null, detailedContent?: string | null, benefits?: Array<string | null> | null } | null> | null, logoCloudClients?: Array<{ __typename: 'PageLogoCloudClients', name: string, industry: string } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null, steps?: Array<{ __typename: 'PageSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null, keyActivities?: Array<string | null> | null } | null> | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -854,7 +1062,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, titleBrandText?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, featuresCtaText?: string | null, featuresButtonText?: string | null, brandName?: string | null, logoCloudSectionTag?: string | null, logoCloudSectionTitle?: string | null, logoCloudSectionDescription?: string | null, logoCloudCtaText?: string | null, logoCloudButtonText?: string | null, testimonialsSectionTag?: string | null, testimonialsSectionTitle?: string | null, testimonialsSectionDescription?: string | null, statsBottomText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null } | null> | null, logoCloudClients?: Array<{ __typename: 'PageLogoCloudClients', name: string, industry: string } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, pageTitle?: string | null, subtitle?: string | null, description?: string | null, titleBrandText?: string | null, heroTitle?: string | null, heroSubtitle?: string | null, heroDescription?: string | null, ctaTitle?: string | null, ctaDescription?: string | null, ctaButtonText?: string | null, servicesSectionTag?: string | null, servicesSectionTitle?: string | null, servicesSectionDescription?: string | null, processSectionTag?: string | null, processSectionTitle?: string | null, processSectionDescription?: string | null, featuresSectionTag?: string | null, featuresSectionTitle?: string | null, featuresSectionDescription?: string | null, featuresCtaText?: string | null, featuresButtonText?: string | null, brandName?: string | null, logoCloudSectionTag?: string | null, logoCloudSectionTitle?: string | null, logoCloudSectionDescription?: string | null, logoCloudCtaText?: string | null, logoCloudButtonText?: string | null, testimonialsSectionTag?: string | null, testimonialsSectionTitle?: string | null, testimonialsSectionDescription?: string | null, statsBottomText?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, story?: string | null, mission?: string | null, contactSectionTitle?: string | null, contactSectionDescription?: string | null, email?: string | null, phone?: string | null, address?: string | null, officeHours?: string | null, footerBrandName?: string | null, footerTagline?: string | null, timelineTitle?: string | null, timelineDescription?: string | null, ctaPrimaryText?: string | null, ctaPrimaryLink?: string | null, ctaSecondaryText?: string | null, ctaSecondaryLink?: string | null, blogCtaTitle?: string | null, blogCtaDescription?: string | null, blogCtaPrimaryText?: string | null, blogCtaPrimaryLink?: string | null, blogCtaSecondaryText?: string | null, blogCtaSecondaryLink?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, stats?: Array<{ __typename: 'PageStats', label: string, value: string, description?: string | null } | null> | null, services?: Array<{ __typename: 'PageServices', title: string, description: string, icon?: string | null, color?: string | null } | null> | null, processSteps?: Array<{ __typename: 'PageProcessSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null } | null> | null, features?: Array<{ __typename: 'PageFeatures', title: string, description: string, icon?: string | null, gradient?: string | null, link?: string | null, detailedContent?: string | null, benefits?: Array<string | null> | null } | null> | null, logoCloudClients?: Array<{ __typename: 'PageLogoCloudClients', name: string, industry: string } | null> | null, values?: Array<{ __typename: 'PageValues', title: string, description: string, icon?: string | null } | null> | null, team?: Array<{ __typename: 'PageTeam', name: string, position: string, bio?: string | null, image?: string | null } | null> | null, socialMedia?: { __typename: 'PageSocialMedia', twitter?: string | null, linkedin?: string | null, instagram?: string | null } | null, steps?: Array<{ __typename: 'PageSteps', number: string, title: string, description: string, icon?: string | null, color?: string | null, keyActivities?: Array<string | null> | null } | null> | null } | null } | null> | null } };
 
 export const PostPartsFragmentDoc = gql`
     fragment PostParts on Post {
@@ -881,6 +1089,28 @@ export const TestimonialPartsFragmentDoc = gql`
   rating
   featured
   date
+}
+    `;
+export const ServicePartsFragmentDoc = gql`
+    fragment ServiceParts on Service {
+  __typename
+  title
+  slug
+  icon
+  color
+  excerpt
+  whatWeDoTitle
+  whatWeDoContent
+  benefitsTitle
+  benefits
+  ctaTitle
+  ctaDescription
+  ctaPrimaryText
+  ctaPrimaryLink
+  ctaSecondaryText
+  ctaSecondaryLink
+  featured
+  body
 }
     `;
 export const PagePartsFragmentDoc = gql`
@@ -933,6 +1163,9 @@ export const PagePartsFragmentDoc = gql`
     description
     icon
     gradient
+    link
+    detailedContent
+    benefits
   }
   featuresCtaText
   featuresButtonText
@@ -982,6 +1215,27 @@ export const PagePartsFragmentDoc = gql`
   }
   footerBrandName
   footerTagline
+  timelineTitle
+  timelineDescription
+  ctaPrimaryText
+  ctaPrimaryLink
+  ctaSecondaryText
+  ctaSecondaryLink
+  steps {
+    __typename
+    number
+    title
+    description
+    icon
+    color
+    keyActivities
+  }
+  blogCtaTitle
+  blogCtaDescription
+  blogCtaPrimaryText
+  blogCtaPrimaryLink
+  blogCtaSecondaryText
+  blogCtaSecondaryLink
   body
 }
     `;
@@ -1099,6 +1353,63 @@ export const TestimonialConnectionDocument = gql`
   }
 }
     ${TestimonialPartsFragmentDoc}`;
+export const ServiceDocument = gql`
+    query service($relativePath: String!) {
+  service(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ServiceParts
+  }
+}
+    ${ServicePartsFragmentDoc}`;
+export const ServiceConnectionDocument = gql`
+    query serviceConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ServiceFilter) {
+  serviceConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ServiceParts
+      }
+    }
+  }
+}
+    ${ServicePartsFragmentDoc}`;
 export const PageDocument = gql`
     query page($relativePath: String!) {
   page(relativePath: $relativePath) {
@@ -1170,6 +1481,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     testimonialConnection(variables?: TestimonialConnectionQueryVariables, options?: C): Promise<{data: TestimonialConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TestimonialConnectionQueryVariables, query: string}> {
         return requester<{data: TestimonialConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TestimonialConnectionQueryVariables, query: string}, TestimonialConnectionQueryVariables>(TestimonialConnectionDocument, variables, options);
+      },
+    service(variables: ServiceQueryVariables, options?: C): Promise<{data: ServiceQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServiceQueryVariables, query: string}> {
+        return requester<{data: ServiceQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServiceQueryVariables, query: string}, ServiceQueryVariables>(ServiceDocument, variables, options);
+      },
+    serviceConnection(variables?: ServiceConnectionQueryVariables, options?: C): Promise<{data: ServiceConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServiceConnectionQueryVariables, query: string}> {
+        return requester<{data: ServiceConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServiceConnectionQueryVariables, query: string}, ServiceConnectionQueryVariables>(ServiceConnectionDocument, variables, options);
       },
     page(variables: PageQueryVariables, options?: C): Promise<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}> {
         return requester<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}, PageQueryVariables>(PageDocument, variables, options);

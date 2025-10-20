@@ -58,6 +58,8 @@ type Query {
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
   testimonial(relativePath: String): Testimonial!
   testimonialConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TestimonialFilter): TestimonialConnection!
+  service(relativePath: String): Service!
+  serviceConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ServiceFilter): ServiceConnection!
   page(relativePath: String): Page!
   pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
 }
@@ -65,6 +67,7 @@ type Query {
 input DocumentFilter {
   post: PostFilter
   testimonial: TestimonialFilter
+  service: ServiceFilter
   page: PageFilter
 }
 
@@ -91,7 +94,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Post | Testimonial | Page | Folder
+union DocumentNode = Post | Testimonial | Service | Page | Folder
 
 type Post implements Node & Document {
   title: String!
@@ -210,6 +213,60 @@ type TestimonialConnection implements Connection {
   edges: [TestimonialConnectionEdges]
 }
 
+type Service implements Node & Document {
+  title: String!
+  slug: String!
+  icon: String
+  color: String
+  excerpt: String!
+  whatWeDoTitle: String
+  whatWeDoContent: String
+  benefitsTitle: String
+  benefits: [String]
+  ctaTitle: String
+  ctaDescription: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  featured: Boolean
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input ServiceFilter {
+  title: StringFilter
+  slug: StringFilter
+  icon: StringFilter
+  color: StringFilter
+  excerpt: StringFilter
+  whatWeDoTitle: StringFilter
+  whatWeDoContent: StringFilter
+  benefitsTitle: StringFilter
+  benefits: StringFilter
+  ctaTitle: StringFilter
+  ctaDescription: StringFilter
+  ctaPrimaryText: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondaryText: StringFilter
+  ctaSecondaryLink: StringFilter
+  featured: BooleanFilter
+  body: RichTextFilter
+}
+
+type ServiceConnectionEdges {
+  cursor: String!
+  node: Service
+}
+
+type ServiceConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [ServiceConnectionEdges]
+}
+
 type PageStats {
   label: String!
   value: String!
@@ -236,6 +293,9 @@ type PageFeatures {
   description: String!
   icon: String
   gradient: String
+  link: String
+  detailedContent: String
+  benefits: [String]
 }
 
 type PageLogoCloudClients {
@@ -260,6 +320,15 @@ type PageSocialMedia {
   twitter: String
   linkedin: String
   instagram: String
+}
+
+type PageSteps {
+  number: String!
+  title: String!
+  description: String!
+  icon: String
+  color: String
+  keyActivities: [String]
 }
 
 type Page implements Node & Document {
@@ -315,6 +384,19 @@ type Page implements Node & Document {
   socialMedia: PageSocialMedia
   footerBrandName: String
   footerTagline: String
+  timelineTitle: String
+  timelineDescription: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  steps: [PageSteps]
+  blogCtaTitle: String
+  blogCtaDescription: String
+  blogCtaPrimaryText: String
+  blogCtaPrimaryLink: String
+  blogCtaSecondaryText: String
+  blogCtaSecondaryLink: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -347,6 +429,9 @@ input PageFeaturesFilter {
   description: StringFilter
   icon: StringFilter
   gradient: StringFilter
+  link: StringFilter
+  detailedContent: StringFilter
+  benefits: StringFilter
 }
 
 input PageLogoCloudClientsFilter {
@@ -371,6 +456,15 @@ input PageSocialMediaFilter {
   twitter: StringFilter
   linkedin: StringFilter
   instagram: StringFilter
+}
+
+input PageStepsFilter {
+  number: StringFilter
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+  color: StringFilter
+  keyActivities: StringFilter
 }
 
 input PageFilter {
@@ -426,6 +520,19 @@ input PageFilter {
   socialMedia: PageSocialMediaFilter
   footerBrandName: StringFilter
   footerTagline: StringFilter
+  timelineTitle: StringFilter
+  timelineDescription: StringFilter
+  ctaPrimaryText: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondaryText: StringFilter
+  ctaSecondaryLink: StringFilter
+  steps: PageStepsFilter
+  blogCtaTitle: StringFilter
+  blogCtaDescription: StringFilter
+  blogCtaPrimaryText: StringFilter
+  blogCtaPrimaryLink: StringFilter
+  blogCtaSecondaryText: StringFilter
+  blogCtaSecondaryLink: StringFilter
   body: RichTextFilter
 }
 
@@ -450,6 +557,8 @@ type Mutation {
   createPost(relativePath: String!, params: PostMutation!): Post!
   updateTestimonial(relativePath: String!, params: TestimonialMutation!): Testimonial!
   createTestimonial(relativePath: String!, params: TestimonialMutation!): Testimonial!
+  updateService(relativePath: String!, params: ServiceMutation!): Service!
+  createService(relativePath: String!, params: ServiceMutation!): Service!
   updatePage(relativePath: String!, params: PageMutation!): Page!
   createPage(relativePath: String!, params: PageMutation!): Page!
 }
@@ -457,6 +566,7 @@ type Mutation {
 input DocumentUpdateMutation {
   post: PostMutation
   testimonial: TestimonialMutation
+  service: ServiceMutation
   page: PageMutation
   relativePath: String
 }
@@ -464,6 +574,7 @@ input DocumentUpdateMutation {
 input DocumentMutation {
   post: PostMutation
   testimonial: TestimonialMutation
+  service: ServiceMutation
   page: PageMutation
 }
 
@@ -488,6 +599,26 @@ input TestimonialMutation {
   rating: Float
   featured: Boolean
   date: String
+}
+
+input ServiceMutation {
+  title: String
+  slug: String
+  icon: String
+  color: String
+  excerpt: String
+  whatWeDoTitle: String
+  whatWeDoContent: String
+  benefitsTitle: String
+  benefits: [String]
+  ctaTitle: String
+  ctaDescription: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  featured: Boolean
+  body: JSON
 }
 
 input PageStatsMutation {
@@ -516,6 +647,9 @@ input PageFeaturesMutation {
   description: String
   icon: String
   gradient: String
+  link: String
+  detailedContent: String
+  benefits: [String]
 }
 
 input PageLogoCloudClientsMutation {
@@ -540,6 +674,15 @@ input PageSocialMediaMutation {
   twitter: String
   linkedin: String
   instagram: String
+}
+
+input PageStepsMutation {
+  number: String
+  title: String
+  description: String
+  icon: String
+  color: String
+  keyActivities: [String]
 }
 
 input PageMutation {
@@ -595,6 +738,19 @@ input PageMutation {
   socialMedia: PageSocialMediaMutation
   footerBrandName: String
   footerTagline: String
+  timelineTitle: String
+  timelineDescription: String
+  ctaPrimaryText: String
+  ctaPrimaryLink: String
+  ctaSecondaryText: String
+  ctaSecondaryLink: String
+  steps: [PageStepsMutation]
+  blogCtaTitle: String
+  blogCtaDescription: String
+  blogCtaPrimaryText: String
+  blogCtaPrimaryLink: String
+  blogCtaSecondaryText: String
+  blogCtaSecondaryLink: String
   body: JSON
 }
 

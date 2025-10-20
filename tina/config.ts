@@ -150,6 +150,129 @@ export default defineConfig({
         ],
       },
       {
+        name: 'service',
+        label: 'Services',
+        path: 'content/services',
+        format: 'mdx',
+        fields: [
+          {
+            type: 'string',
+            name: 'title',
+            label: 'Service Title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'slug',
+            label: 'URL Slug',
+            description: 'URL-friendly version (e.g., website-content, brand-storytelling)',
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'icon',
+            label: 'Icon Name',
+            description: 'Lucide icon name (e.g., Newspaper, Users, Target, TrendingUp)',
+          },
+          {
+            type: 'string',
+            name: 'color',
+            label: 'Gradient Color',
+            description: 'Tailwind gradient classes (e.g., from-orange-500 to-red-500)',
+          },
+          {
+            type: 'string',
+            name: 'excerpt',
+            label: 'Short Description',
+            description: 'Brief description for service cards',
+            required: true,
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
+            name: 'whatWeDoTitle',
+            label: 'What We Do Section Title',
+            description: 'Title for the "What We Do" section',
+          },
+          {
+            type: 'string',
+            name: 'whatWeDoContent',
+            label: 'What We Do Content',
+            description: 'Detailed description of the service',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
+            name: 'benefitsTitle',
+            label: 'Benefits Section Title',
+            description: 'Title for the benefits section',
+          },
+          {
+            type: 'string',
+            name: 'benefits',
+            label: 'Benefits List',
+            description: 'Key benefits of this service',
+            list: true,
+          },
+          {
+            type: 'string',
+            name: 'ctaTitle',
+            label: 'CTA Title',
+            description: 'Call to action section title',
+          },
+          {
+            type: 'string',
+            name: 'ctaDescription',
+            label: 'CTA Description',
+            description: 'Call to action description text',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
+            name: 'ctaPrimaryText',
+            label: 'Primary Button Text',
+          },
+          {
+            type: 'string',
+            name: 'ctaPrimaryLink',
+            label: 'Primary Button Link',
+          },
+          {
+            type: 'string',
+            name: 'ctaSecondaryText',
+            label: 'Secondary Button Text',
+          },
+          {
+            type: 'string',
+            name: 'ctaSecondaryLink',
+            label: 'Secondary Button Link',
+          },
+          {
+            type: 'boolean',
+            name: 'featured',
+            label: 'Featured Service',
+            description: 'Display this service prominently',
+          },
+          {
+            type: 'rich-text',
+            name: 'body',
+            label: 'Additional Content',
+            description: 'Extra content for the service page',
+            isBody: true,
+          },
+        ],
+        ui: {
+          router: ({ document }) => `/services/${document._sys.filename}`,
+        },
+      },
+      {
         name: 'page',
         label: 'Pages',
         path: 'content/pages',
@@ -187,7 +310,8 @@ export default defineConfig({
             type: 'string',
             name: 'titleBrandText',
             label: 'Title Brand Text',
-            description: 'Optional brand name/text to display after page title (e.g., "Chris Austin PR" in "About Chris Austin PR")',
+            description:
+              'Optional brand name/text to display after page title (e.g., "Chris Austin PR" in "About Chris Austin PR")',
           },
           // Homepage specific fields
           {
@@ -446,6 +570,29 @@ export default defineConfig({
                 name: 'gradient',
                 label: 'Gradient Color',
                 description: 'Tailwind gradient classes (e.g., from-purple-500 to-pink-500)',
+              },
+              {
+                type: 'string',
+                name: 'link',
+                label: 'Link URL',
+                description:
+                  'Where this feature card should link to (e.g., /features or /services/brand-storytelling)',
+              },
+              {
+                type: 'string',
+                name: 'detailedContent',
+                label: 'Detailed Content',
+                description: 'Extended description for the features page',
+                ui: {
+                  component: 'textarea',
+                },
+              },
+              {
+                type: 'string',
+                name: 'benefits',
+                label: 'Benefits List',
+                description: 'Key benefits of this feature (for features page)',
+                list: true,
               },
             ],
           },
@@ -728,6 +875,138 @@ export default defineConfig({
             ui: {
               component: 'textarea',
             },
+          },
+          // Process Page Fields
+          {
+            type: 'string',
+            name: 'timelineTitle',
+            label: 'Timeline Title',
+            description: 'Title for the timeline visualization section (Process page)',
+          },
+          {
+            type: 'string',
+            name: 'timelineDescription',
+            label: 'Timeline Description',
+            description: 'Description for the timeline section (Process page)',
+          },
+          {
+            type: 'string',
+            name: 'ctaPrimaryText',
+            label: 'CTA Primary Button Text',
+            description: 'Text for primary CTA button (Process page)',
+          },
+          {
+            type: 'string',
+            name: 'ctaPrimaryLink',
+            label: 'CTA Primary Button Link',
+            description: 'Link for primary CTA button (Process page)',
+          },
+          {
+            type: 'string',
+            name: 'ctaSecondaryText',
+            label: 'CTA Secondary Button Text',
+            description: 'Text for secondary CTA button (Process page)',
+          },
+          {
+            type: 'string',
+            name: 'ctaSecondaryLink',
+            label: 'CTA Secondary Button Link',
+            description: 'Link for secondary CTA button (Process page)',
+          },
+          {
+            type: 'object',
+            name: 'steps',
+            label: 'Process Steps (Detailed)',
+            description: 'Detailed process steps for the process page',
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.title || 'Step' }
+              },
+            },
+            fields: [
+              {
+                type: 'string',
+                name: 'number',
+                label: 'Step Number',
+                description: 'e.g., 01, 02, 03',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'title',
+                label: 'Step Title',
+                required: true,
+              },
+              {
+                type: 'string',
+                name: 'description',
+                label: 'Description',
+                required: true,
+                ui: {
+                  component: 'textarea',
+                },
+              },
+              {
+                type: 'string',
+                name: 'icon',
+                label: 'Icon Name',
+                description: 'Lucide icon name (e.g., Lightbulb, Target, Rocket, TrendingUp)',
+              },
+              {
+                type: 'string',
+                name: 'color',
+                label: 'Gradient Color',
+                description: 'Tailwind gradient classes (e.g., from-purple-500 to-pink-500)',
+              },
+              {
+                type: 'string',
+                name: 'keyActivities',
+                label: 'Key Activities',
+                description: 'List of key activities (one per line)',
+                list: true,
+              },
+            ],
+          },
+          // Blog Post CTA Fields
+          {
+            type: 'string',
+            name: 'blogCtaTitle',
+            label: 'Blog CTA Title',
+            description: 'Title for CTA section on blog post pages',
+          },
+          {
+            type: 'string',
+            name: 'blogCtaDescription',
+            label: 'Blog CTA Description',
+            description: 'Description for CTA section on blog post pages',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
+            name: 'blogCtaPrimaryText',
+            label: 'Blog CTA Primary Button Text',
+            description: 'Text for primary button on blog post CTA',
+          },
+          {
+            type: 'string',
+            name: 'blogCtaPrimaryLink',
+            label: 'Blog CTA Primary Button Link',
+            description: 'Link for primary button on blog post CTA',
+          },
+          {
+            type: 'string',
+            name: 'blogCtaSecondaryText',
+            label: 'Blog CTA Secondary Button Text',
+            description: 'Text for secondary button on blog post CTA',
+          },
+          {
+            type: 'string',
+            name: 'blogCtaSecondaryLink',
+            label: 'Blog CTA Secondary Button Link',
+            description: 'Link for secondary button on blog post CTA',
           },
           {
             type: 'rich-text',

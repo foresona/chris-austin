@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 import {
   Sparkles,
   Zap,
@@ -17,6 +18,7 @@ interface Feature {
   description: string
   icon?: string
   gradient?: string
+  link?: string
 }
 
 interface FeaturesShowcaseProps {
@@ -28,13 +30,14 @@ interface FeaturesShowcaseProps {
   buttonText?: string
 }
 
-const defaultFeatures = [
+const defaultFeatures: Feature[] = [
   {
     icon: 'Sparkles',
     title: 'Strategic Storytelling',
     description:
       'Craft compelling narratives that resonate with your audience and capture media attention',
     gradient: 'from-purple-500 to-pink-500',
+    link: '/features#strategic-storytelling',
   },
   {
     icon: 'Target',
@@ -42,6 +45,7 @@ const defaultFeatures = [
     description:
       'Connect with the right journalists, influencers, and media outlets for maximum impact',
     gradient: 'from-blue-500 to-cyan-500',
+    link: '/features#targeted-outreach',
   },
   {
     icon: 'MessageCircle',
@@ -49,24 +53,28 @@ const defaultFeatures = [
     description:
       'Navigate challenging situations with confidence and protect your brand reputation',
     gradient: 'from-orange-500 to-red-500',
+    link: '/features#crisis-management',
   },
   {
     icon: 'TrendingUp',
     title: 'Growth Analytics',
     description: 'Track your PR performance with detailed metrics and actionable insights',
     gradient: 'from-green-500 to-emerald-500',
+    link: '/features#growth-analytics',
   },
   {
     icon: 'Zap',
     title: 'Rapid Response',
     description: 'Stay ahead of trends and capitalize on opportunities with our agile approach',
     gradient: 'from-yellow-500 to-orange-500',
+    link: '/features#rapid-response',
   },
   {
     icon: 'BarChart3',
     title: 'ROI Optimization',
     description: 'Maximize your PR investment with data-driven strategies and measurable results',
     gradient: 'from-indigo-500 to-purple-500',
+    link: '/features#roi-optimization',
   },
 ]
 
@@ -176,6 +184,9 @@ export default function FeaturesShowcase({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuresData.map((feature, index) => {
             const Icon = feature.icon ? iconMap[feature.icon] || Sparkles : Sparkles
+            // Use the link from CMS, or default to features page with anchor
+            const defaultLink = `/features#${feature.title.toLowerCase().replace(/\s+/g, '-')}`
+            const linkHref = feature.link || defaultLink
 
             return (
               <motion.div
@@ -187,65 +198,67 @@ export default function FeaturesShowcase({
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="group relative"
               >
-                <div className="relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-lg border-2 border-gray-100 transition-all duration-500 hover:shadow-2xl hover:border-transparent">
-                  {/* Gradient border on hover */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}
-                    style={{ padding: '2px' }}
-                  >
-                    <div className="h-full w-full bg-white rounded-3xl" />
-                  </div>
-
-                  <div className="relative z-10">
-                    {/* Icon with animated background */}
-                    <motion.div
-                      className="relative inline-flex mb-6"
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{ duration: 0.6 }}
+                <Link href={linkHref} className="block h-full">
+                  <div className="relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-lg border-2 border-gray-100 transition-all duration-500 hover:shadow-2xl hover:border-transparent">
+                    {/* Gradient border on hover */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}
+                      style={{ padding: '2px' }}
                     >
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} blur-xl opacity-50 group-hover:opacity-100 transition-opacity`}
-                      />
-                      <div
-                        className={`relative p-4 rounded-2xl bg-gradient-to-br ${feature.gradient}`}
-                      >
-                        <Icon className="w-8 h-8 text-white" />
-                      </div>
-                    </motion.div>
+                      <div className="h-full w-full bg-white rounded-3xl" />
+                    </div>
 
-                    {/* Content */}
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:bg-gradient-to-r group-hover:from-[#db4a2b] group-hover:to-[#ff6b4a] group-hover:bg-clip-text group-hover:text-transparent transition-all">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-700">
-                      {feature.description}
-                    </p>
-
-                    {/* Animated arrow */}
-                    <motion.div
-                      className="mt-6 flex items-center text-sm font-semibold text-gray-400 group-hover:text-[#db4a2b]"
-                      initial={{ x: 0 }}
-                      whileHover={{ x: 5 }}
-                    >
-                      Learn more
-                      <motion.span
-                        className="ml-2"
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                    <div className="relative z-10">
+                      {/* Icon with animated background */}
+                      <motion.div
+                        className="relative inline-flex mb-6"
+                        whileHover={{ scale: 1.1, rotate: 360 }}
+                        transition={{ duration: 0.6 }}
                       >
-                        →
-                      </motion.span>
-                    </motion.div>
+                        <div
+                          className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} blur-xl opacity-50 group-hover:opacity-100 transition-opacity`}
+                        />
+                        <div
+                          className={`relative p-4 rounded-2xl bg-gradient-to-br ${feature.gradient}`}
+                        >
+                          <Icon className="w-8 h-8 text-white" />
+                        </div>
+                      </motion.div>
+
+                      {/* Content */}
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:bg-gradient-to-r group-hover:from-[#db4a2b] group-hover:to-[#ff6b4a] group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700">
+                        {feature.description}
+                      </p>
+
+                      {/* Animated arrow */}
+                      <motion.div
+                        className="mt-6 flex items-center text-sm font-semibold text-gray-400 group-hover:text-[#db4a2b]"
+                        initial={{ x: 0 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        Learn more
+                        <motion.span
+                          className="ml-2"
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          →
+                        </motion.span>
+                      </motion.div>
+                    </div>
+
+                    {/* Decorative corner gradients */}
+                    <div
+                      className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-bl-full transition-opacity`}
+                    />
+                    <div
+                      className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-tr-full transition-opacity`}
+                    />
                   </div>
-
-                  {/* Decorative corner gradients */}
-                  <div
-                    className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-bl-full transition-opacity`}
-                  />
-                  <div
-                    className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-tr-full transition-opacity`}
-                  />
-                </div>
+                </Link>
               </motion.div>
             )
           })}
@@ -262,19 +275,21 @@ export default function FeaturesShowcase({
           <p className="text-gray-600 mb-6 text-lg">
             {ctaText || 'Ready to experience the difference?'}
           </p>
-          <motion.button
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span>{buttonText || 'Explore All Features'}</span>
-            <motion.span
-              animate={{ rotate: [0, 90, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+          <Link href="/features">
+            <motion.button
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              ✦
-            </motion.span>
-          </motion.button>
+              <span>{buttonText || 'Explore All Features'}</span>
+              <motion.span
+                animate={{ rotate: [0, 90, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                ✦
+              </motion.span>
+            </motion.button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>
