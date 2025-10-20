@@ -133,10 +133,12 @@ export default function ServicesSection({
           {servicesData.map((service, index) => {
             const Icon = service.icon ? iconMap[service.icon] || Newspaper : Newspaper
             // Use provided slug if available, otherwise generate from title
-            const slug = service.slug || service.title
-              .toLowerCase()
-              .replace(/\s+/g, '-')
-              .replace(/[^a-z0-9-]/g, '')
+            const slug =
+              service.slug ||
+              service.title
+                .toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9-]/g, '')
 
             return (
               <motion.div
