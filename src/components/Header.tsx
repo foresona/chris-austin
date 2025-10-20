@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -20,27 +21,24 @@ interface HeaderProps {
 }
 
 export default function Header({ brandName }: HeaderProps = {}) {
+  const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isHomePage, setIsHomePage] = useState(false)
-  const { scrollY } = useScroll()
+  const isHomePage = pathname === '/'
 
   useEffect(() => {
-    // Detect homepage immediately on mount
-    const checkPage = () => {
-      const path = window.location.pathname
-      setIsHomePage(path === '/')
-    }
-    checkPage()
+    console.log('Header: pathname =', pathname, 'isHomePage =', isHomePage)
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const scrolled = window.scrollY > 50
+      setIsScrolled(scrolled)
+      console.log('Header: isScrolled =', scrolled, 'scrollY =', window.scrollY)
     }
     handleScroll()
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [pathname, isHomePage])
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -50,42 +48,58 @@ export default function Header({ brandName }: HeaderProps = {}) {
     }
   }, [mobileMenuOpen])
 
-  // Dynamic background based on page type
-  const bgStart = isHomePage ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0.85)'
-  const bgEnd = 'rgba(255, 255, 255, 0.98)'
-  const backgroundColor = useTransform(scrollY, [0, 100], [bgStart, bgEnd])
+  // Calculate background color based on page and scroll state
+  const getBackgroundColor = () => {
+    if (isHomePage && !isScrolled) {
+      return 'linear-gradient(to bottom right, #000000, #111827, #000000)' // Same gradient as hero
+    } else if (isHomePage && isScrolled) {
+      return 'rgba(255, 255, 255, 0.98)'
+    } else if (!isHomePage && !isScrolled) {
+      return 'rgba(255, 255, 255, 0.85)'
+    } else {
+      return 'rgba(255, 255, 255, 0.98)'
+    }
+  }
 
-  // Dynamic blur based on page type
-  const blurStart = isHomePage ? 0 : 10
-  const blurEnd = 12
-  const backdropBlur = useTransform(scrollY, [0, 100], [blurStart, blurEnd])
+  // Calculate blur amount
+  const getBlurAmount = () => {
+    if (isHomePage && !isScrolled) {
+      return '0px' // No blur on solid background
+    } else if (isHomePage && isScrolled) {
+      return '12px'
+    } else if (!isHomePage && !isScrolled) {
+      return '10px'
+    } else {
+      return '12px'
+    }
+  }
+
+  // Determine if text should be white (only on homepage at top)
+  const shouldUseWhiteText = isHomePage && !isScrolled
+  console.log('Header: shouldUseWhiteText =', shouldUseWhiteText, '(isHomePage:', isHomePage, 'isScrolled:', isScrolled, ')')
 
   return (
     <motion.header
       style={{
-        backgroundColor,
+        background: getBackgroundColor(), // Use 'background' instead of 'backgroundColor' for gradients
+        backdropFilter: `blur(${getBlurAmount()})`,
       }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'border-b border-gray-200 shadow-md' : 'border-b border-transparent'
+        isScrolled 
+          ? 'border-b border-gray-200 shadow-md' 
+          : isHomePage 
+            ? '' // No border on homepage
+            : 'border-b border-transparent'
       }`}
     >
-      <motion.div
-        style={{
-          backdropFilter: `blur(${backdropBlur}px)`,
-        }}
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
       >
-        <nav
-          className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-          aria-label="Global"
-        >
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 group">
               <motion.span
-                className={`text-2xl font-bold transition-all duration-300 ${
-                  isHomePage && !isScrolled
-                    ? 'text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]'
-                    : 'bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent'
-                }`}
+                className="text-2xl font-bold transition-all duration-300 bg-gradient-to-r from-[#db4a2b] to-[#ff6b4a] bg-clip-text text-transparent"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
@@ -97,10 +111,13 @@ export default function Header({ brandName }: HeaderProps = {}) {
           <div className="flex lg:hidden">
             <button
               type="button"
+              style={{
+                color: shouldUseWhiteText ? '#ffffff' : '#374151',
+              }}
               className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors ${
-                isHomePage && !isScrolled
-                  ? 'text-white hover:bg-white/10'
-                  : 'text-gray-700 hover:bg-gray-100'
+                shouldUseWhiteText
+                  ? 'hover:bg-white/10 drop-shadow-lg'
+                  : 'hover:bg-gray-100'
               }`}
               onClick={() => setMobileMenuOpen(true)}
             >
@@ -114,10 +131,14 @@ export default function Header({ brandName }: HeaderProps = {}) {
               <Link
                 key={item.name}
                 href={item.href}
+                style={{
+                  color: shouldUseWhiteText ? '#ffffff' : '#111827',
+                  textShadow: shouldUseWhiteText ? '0 1px 2px rgba(0, 0, 0, 0.2)' : undefined,
+                }}
                 className={`relative text-sm font-semibold leading-6 transition-colors group ${
-                  isHomePage && !isScrolled
-                    ? 'text-white hover:text-gray-200 drop-shadow-lg'
-                    : 'text-gray-900 hover:text-[#db4a2b]'
+                  shouldUseWhiteText
+                    ? 'hover:text-gray-200'
+                    : 'hover:text-[#db4a2b]'
                 }`}
               >
                 {item.name}
@@ -137,9 +158,8 @@ export default function Header({ brandName }: HeaderProps = {}) {
             </Link>
           </div>
         </nav>
-      </motion.div>
 
-      <AnimatePresence>
+        <AnimatePresence>
         {mobileMenuOpen && (
           <>
             <motion.div
